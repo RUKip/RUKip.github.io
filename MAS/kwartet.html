@@ -107,8 +107,9 @@
 									<p id="architecture" class="lead">Architecture</p>
 									<p class="article-text"> 
 										To model the structure of a kripke model, we use python dictionaries.
-										Keys in the dictionaries are propesitionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not K</b>], here <b>not K</b> can be seen as removed from the model.
+										Keys in the dictionaries are propesitionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>], here <b>not</b> can be seen as removed from the model.
 										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>, the keys are ordered in this structure as a possible group is know first and is of higher order then a single card, optimizing the search for possible options.
+										If a card is known, the group is known, so there is no option of a known card in a <b>M</b> or <b>deleted</b> group.
 									</p>
 									<div class="blog-media">
 										<figure>
