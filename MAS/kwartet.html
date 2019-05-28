@@ -60,46 +60,79 @@
 	</header>
 
     <div id="wrapper">
-		<section class="section gb nopadtop">
-			<div class="container">
-				<div class="boxed">
-					<div class="row">
-						<div class="col-md-8">
-							<div class="content blog-list">
-								<div class="blog-wrapper clearfix">
-									<div class="blog-meta">
-										<h3>A Kwartet simulation using logic for multiple agents</h3>
-										<ul class="list-inline">
-                                            <li><span>written by</span> <a href="https://github.com/mrcabo">Diego Cabo</a> & <a href="https://github.com/TRebekka">Tanja de Vries</a> & <a href="https://github.com/RUKip">Ruben Kip</a></li>
-                                        </ul>
-									</div><!-- end blog-meta -->
+		<div class="container">
+			<div class="boxed">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="content blog-list">
+							<div class="blog-wrapper clearfix">
+								<div class="blog-meta">
+									<h3>A Kwartet simulation using logic for multiple agents</h3>
+									<ul class="list-inline">
+										<li><span>written by</span> <a href="https://github.com/mrcabo" target="_blank">Diego Cabo</a> & <a href="https://github.com/TRebekka" target="_blank">Tanja de Vries</a> & <a href="https://github.com/RUKip" target="_blank">Ruben Kip</a></li>
+									</ul>
+								</div><!-- end blog-meta -->
 
-									<!-- 
+								<div class="blog-desc-big">
+									<p class="lead">Content</p>
+									<ul>
+										<li><a href="#intro">Introduction</a></li>
+										<li><a href="#example">Example game loop</a></li>
+										<li><a href="#architecture">Architecture</a></li>
+										<li><a href="#actions">Actions</a></li>
+									</ul>
+
+								</div><!-- end desc -->
+
+								<div class="blog-desc-big">
+									<p id="intro" class="lead">Introduction</p>
+									<p class="article-text">
+										Kwartet is a dutch game, were the goal is to collect sets of cards in the same group by asking other players for cards.
+										The game requires knowledge of your own cards, the card set and the asked questions to figure out which player has the cards you require for completing a set.
+									</p>
+									<p class="article-text">
+										The simulation is programmed in python and uses only the python standard library. Code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
+									</p>
+
+								</div><!-- end desc -->
+								
+								<div class="blog-desc-big">
+									<p id="example" class="lead">An example game loop</p>
+									<p class="article-text">   
+										
+									</p>
+								</div><!-- end desc -->
+								
+								<div class="blog-desc-big">
+									<p id="architecture" class="lead">Architecture</p>
+									<p class="article-text"> 
+										To model the structure of a kripke model, we use python dictionaries.
+										Keys in the dictionaries are propesitionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not K</b>], here <b>not K</b> can be seen as removed from the model.
+										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>, the keys are ordered in this structure as a possible group is know first and is of higher order then a single card, optimizing the search for possible options.
+									</p>
 									<div class="blog-media">
-										<img src="upload/kripke_model.jpg" alt="" class="img-responsive img-rounded">
+										<figure>
+											<img id="figure1" src="../images/data_structure.png" alt="" class="img-responsive img-rounded">
+											<figcaption>Fig.1 - Kripke model data structure.</figcaption>
+										</figure>
 									</div><!-- end media -->
-									
-
+									<p class="article-text">
+										As we want to play our cards based on different startegies, we require not only to look at possible cards, but also other values such as which player owns which group. 
+										For each extra value we look at we require a seperate model as in our data structure limits us, we cannot "remove" a world of the model without affecting worlds that should still be accesble from that world. <!-- possible improvement here, can be added to improvement section -->   
+									</p>
+								</div><!-- end desc -->
 									<div class="blog-desc-big">
-										<p class="lead">Introduction</p>
-										<p>
-											Kwartet is a dutch game, were the goal is to collect sets of cards in the same group.
-										</p>
-
-									</div><!-- end desc -->
-									<div class="blog-desc-big">
-										<p class="lead">Architecture</p>
-										<p>
+									<p id="actions" class="lead">Actions</p>
+									<p class="article-text"> 
 											
-										</p>
-									</div><!-- end desc -->
-								</div><!-- end blog wrapper -->
-							</div><!-- end content -->
-						</div><!-- end col -->
-					</div><!-- end row -->
-				</div><!-- end box -->
-			</div><!-- end container -->
-		</section><!-- end main section -->
+									</p>
+								</div><!-- end desc -->
+							</div><!-- end blog wrapper -->
+						</div><!-- end content -->
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end box -->
+		</div><!-- end container -->
 	</div><!-- end wrapper -->
 	
     <!-- jQuery Files -->
