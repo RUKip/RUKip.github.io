@@ -77,6 +77,7 @@
 									<p class="lead">Content</p>
 									<ul>
 										<li><a href="#intro">Introduction</a></li>
+										<li><a href="#rules">The rules of Kwartet</a></li>
 										<li><a href="#example">Example game loop</a></li>
 										<li><a href="#architecture">Architecture</a></li>
 										<li><a href="#actions">Actions</a></li>
@@ -91,15 +92,70 @@
 										The game requires knowledge of your own cards, the card set and the asked questions to figure out which player has the cards you require for completing a set.
 									</p>
 									<p class="article-text">
-										The simulation is programmed in python and uses only the python standard library. Code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
+										The simulation is programmed in python and uses only the python standard library. The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
 									</p>
 
 								</div><!-- end desc -->
+
+								<div class="blog-desc-big">
+									<p id="intro" class="lead">The rules of Kwartet</p>
+									<p class="article-text">
+										The game of Kwartet is played in random order. 
+										That is, after a player finishes his turn, the player last asked a card starts his turn. On your turn, you can ask for a card of any other player. 
+										If the other player does not have the card, your turn is over and his will start. If the other player does have the card he has to give the card to you, and you may ask another question to any of the players. 
+										Your turn ends at the moment you get no as an answer. 
+										<br><br>
+										The game has two more rules. Firstly, you can only ask for a card if you have a card of the same group. 
+										So, you are only allowed to ask for ‘a fat cow’ if you own at least one of the other ‘farm animals’ cards.
+										Secondly, which may be the most important rule of Kwartet, you are not allowed to lie. 
+										If someone asks you for a card that you own, you have to give him the card.
+										<br><br>
+										Every group consists of 4 cards. 
+										If you have collected all cards from a group, you earn 1 point and the group is out of the game. 
+										The game ends if all groups are collected and there are no cards left in the game. 
+										The player with the most points, i.e. the player that collected the most groups is the winner. 
+									</p>
 								
 								<div class="blog-desc-big">
 									<p id="example" class="lead">An example game loop</p>
 									<p class="article-text">   
-										
+										<i>
+										Suppose Diego, Ruben and Tanja are playing a game of Kwartet. 
+										Diego starts the game by asking Tanja for the 'smelly goat' card from the 'farm animals' group. 
+										Even before Tanja gives an answer, the knowledge of the players changes. 
+										To see what happens with the knowledge we go through the first questions of this game step by step. 
+										</i>
+										<br><br>   
+										<b>Diego:</b> “Tanja, do you have from ‘farm animals’ the ‘smelly goat’?”
+										<br><br>
+										<i>
+										Ruben and Tanja now know that Diego has a card of the group ‘farm animals’, otherwise he would not be allowed to ask this question.
+										Moreover, they know that he does not have the ‘smelly goat’ card.
+										</i>
+										<br><br>
+										<b>Tanja:</b> “No.”
+										<br><br>
+										<i>
+										Diego and Ruben know that Tanja does not have the ‘smelly goat’ card.
+										</i>
+										<br><br> 
+										Diego’s turn is over, it is Rubens turn.
+										<br><br>
+										<b>Ruben:</b> “Diego, do you have from ‘farm animals’ the ‘crazy pig’?”
+										<br><br>
+										<i>Diego and Tanja now know that Ruben has a card of the ‘farm animals’, but he does not have the ‘crazy pig’.</i> 
+										<br><br>
+										<b>Diego:</b> “Yes.”
+										<br><br>
+										<i>Ruben and Tanja know Diego has the ‘crazy pig’.</i>
+										<br><br>
+										Diego gives ‘grazy pig’ card to Ruben.
+										<br><br>
+										<i>
+										Everyone now knows Ruben has the ‘crazy pig’. <br>
+										Everyone knows Diego & Tanja do not have the ‘crazy pig’. <br>
+										Moreover, Ruben and Tanja no longer know whether Diego has a ‘farm animals’ card.<br>
+										</i>
 									</p>
 								</div><!-- end desc -->
 								
@@ -119,7 +175,7 @@
 									</div><!-- end media -->
 									<p class="article-text">
 										As we want to play our cards based on different startegies, we require not only to look at possible cards, but also other values such as which player owns which group. 
-										For each extra value we look at we require a seperate model as in our data structure limits us, we cannot "remove" a world of the model without affecting worlds that should still be accesble from that world. <!-- possible improvement here, can be added to improvement section -->   
+										For each extra value we look at, we require a seperate model, as our data structure limits us, we cannot "remove" a world of the model without affecting worlds that should still be accesble from that world. <!-- possible improvement here, can be added to improvement section -->   
 									</p>
 								</div><!-- end desc -->
 									<div class="blog-desc-big">
