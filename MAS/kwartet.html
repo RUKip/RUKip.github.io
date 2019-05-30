@@ -93,6 +93,7 @@
 									</p>
 									<p class="article-text">
 										The simulation is programmed in python and uses only the python standard library. The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
+										The simulation is tracked by logging steps from the simulation to a log file.
 									</p>
 
 								</div><!-- end desc -->
@@ -192,27 +193,40 @@
 									<div class="blog-desc-big">
 									<p id="actions" class="lead">Actions</p>
 									<p class="article-text"> 
-											
-									</p>
+											There are 4 actions that influence the knowledge structure:
+											<ul>
+												<li class="article-text"> (Private) Seeing own cards </li>
+												<li class="article-text"> (Announcement) Requesting a card </li>
+												<li class="article-text"> (Announcement) Giving a card </li>
+												<li class="article-text"> (Announcement) Not giving a card </li>
+											</ul>
+										</p>
 									
 									<div class="blog-desc-big">
 									<p id="discussion" class="lead">Discussion</p>
 									<p class="article-text"> 
-									
+										
 									</p>
 									
 									
 									<div class="blog-desc-big">
 									<p id="conclusion" class="lead">Conclusion</p>
 									<p class="article-text"> 
-									
+										
 									</p>
 									
 									
 									<div class="blog-desc-big">
 									<p id="improvements" class="lead">Improvements</p>
 									<p class="article-text"> 
-									
+										In our implementation of kwartet there is still much to improve in play and in performance, a few points we will list: 
+										<ul>
+											<li class="article-text">In our datastructure all worlds are initialized, creating the largest possible kripke model, the behaviour of a kripke model is simulated by setting elements to removed when we make announcements. Dynamic world creation and removal in a datastructure might be more memory efficient and faster to process.</li>
+											<br>
+											<li class="article-text">To create a more human like simulation, the simulation could add agents forgetting cards, this can be done by once in a while setting <b>K</b> propositionals to <b>M</b> in the kripke model.</li>
+											<br>
+											<li class="article-text">Agents now choose to pick cards they know, however it might be more benificial to play with different or alternating strategies. So might it be better for an agent to wait with asking for some card, untill all players are known to have that group, keeping their group a secret.</li>
+										</ul>
 									</p>
 								</div><!-- end desc -->
 							</div><!-- end blog wrapper -->
