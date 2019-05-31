@@ -105,7 +105,7 @@
 									</p>
 								<!--<div class="blog-media">
 									<img id="meme1" src="../images/lose.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
-								</div><!-- end media -->
+								</div> end media -->
 							
 									<p class="article-text">
 										The game of Kwartet is played in random order. 
@@ -169,13 +169,13 @@
 								
 								<!--<div class="blog-media">
 									<img id="meme2" src="../images/knowing.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
-								</div><!-- end media -->
+								</div> end media -->
 								
 								<div class="blog-desc-big">
 									<p id="architecture" class="lead">Architecture</p>
 									<p class="article-text"> 
 										To model the structure of a kripke model, we use python dictionaries.
-										Keys in the dictionaries are propesitionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>], here <b>not</b> can be seen as removed from the model.
+										Keys in the dictionaries are propositionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>], here <b>not</b> can be seen as removed from the model.
 										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>, the keys are ordered in this structure as a possible group is know first and is of higher order then a single card, optimizing the search for possible options.
 										If a card is known, the group is known, so there is no option of a known card in a <b>M</b> or <b>deleted</b> group.
 									</p>
@@ -189,6 +189,24 @@
 										As we want to play our cards based on different startegies, we require not only to look at possible cards, but also other values such as which player owns which group. 
 										For each extra value we look at, we require a seperate model, as our data structure limits us, we cannot "remove" a world of the model without affecting worlds that should still be accesble from that world. <!-- possible improvement here, can be added to improvement section -->   
 									</p>
+									<p class="article-text">
+										To make the relation with kripke models more specific, we show in Figure 2 a kripke model with the corresponding data structure that we use in Figure 3.
+										In this example we have 3 players and one group of cards. Player B starts with 2 cards and player A and C start with 1 card. Player A then asks player C for card 1 after which player C announces she does not have this card.
+										The data structure is only shown for player A, we have similar data structures for player B and C.
+									</p>
+									<div class="blog-media">
+										<figure>
+											<img id="figure2" src="../images/kripke.png" alt="" class="img-responsive img-rounded">
+											<figcaption>Fig.2 - Kripke model, where the double circle is the true world.</figcaption>
+										</figure>
+									</div><!-- end media -->
+									<div class="blog-media">
+										<figure>
+											<img id="figure3" src="../images/model.png" alt="" class="img-responsive img-rounded">
+											<figcaption>Fig.3 - Kripke model datastructure for player A.</figcaption>
+										</figure>
+									</div><!-- end media -->
+									
 								</div><!-- end desc -->
 									<div class="blog-desc-big">
 									<p id="actions" class="lead">Actions</p>
