@@ -128,7 +128,7 @@
 									<p class="article-text">   
 										<i>
 										Suppose Diego, Ruben and Tanja are playing a game of Kwartet. 
-										Diego starts the game by asking Tanja for the 'smelly goat' card from the 'farm animals' group. 
+										Like John, Diego knows nothing, starting the game by asking a random card and player, in this case Tanja for the 'smelly goat' card from the 'farm animals' group. 
 										Even before Tanja gives an answer, the knowledge of the players changes. 
 										To see what happens with the knowledge we go through the first questions of this game step by step. 
 										</i>
@@ -136,31 +136,29 @@
 										<b>Diego:</b> “Tanja, do you have from ‘farm animals’ the ‘smelly goat’?”
 										<br><br>
 										<i>
-										Ruben and Tanja now know that Diego has a card of the group ‘farm animals’, otherwise he would not be allowed to ask this question.
-										Moreover, they know that he does not have the ‘smelly goat’ card.
+										Based on this announcement it is common knowledge that Diego has a card of the group ‘farm animals’, otherwise he would not be allowed to ask this question.
+										Moreover, it is common knowledge that he does not have the ‘smelly goat’ card.
 										</i>
 										<br><br>
 										<b>Tanja:</b> “No.”
 										<br><br>
 										<i>
-										,From this point it is Common knowledge that Tanja does not have the ‘smelly goat’ card, so everyone including Diego and Ruben now remove the possiblity that Tanja has a smelly goat.
+										From this point it is common knowledge that Tanja does not have the ‘smelly goat’ card, so everyone now removes the possiblity in their model that Tanja has a smelly goat.
 										</i>
 										<br><br> 
-										Diego’s turn is over, it is Rubens turn.
+										Diego’s turn is over, it is Tanja's turn.
 										<br><br>
-										<b>Ruben:</b> “Diego, do you have from ‘farm animals’ the ‘crazy pig’?”
+										<b>Tanja:</b> “Diego, do you have from ‘farm animals’ the ‘crazy pig’?”
 										<br><br>
-										<i>Diego and Tanja now know that Ruben has a card of the ‘farm animals’, but he does not have the ‘crazy pig’.</i> 
+										<i>This time again it becomes common knowledge that Tanja has a card of the ‘farm animals’, but she does not have the ‘crazy pig’.</i> 
 										<br><br>
 										<b>Diego:</b> “Yes.”
 										<br><br>
-										<i>Ruben and Tanja know Diego has the ‘crazy pig’.</i>
-										<br><br>
-										Diego gives ‘grazy pig’ card to Ruben.
+										Diego gives the ‘crazy pig’ card to Tanja.
 										<br><br>
 										<i>
-										Everyone now knows Ruben has the ‘crazy pig’. <br>
-										Everyone knows Diego & Tanja do not have the ‘crazy pig’. <br>
+										Now it is common knowledge that Tanja has the ‘crazy pig’. <br>
+										It is common knowledge Diego & Ruben do not have the ‘crazy pig’. <br>
 										Moreover, Ruben and Tanja no longer know whether Diego has a ‘farm animals’ card.<br>
 										</i>
 									</p>
@@ -173,9 +171,9 @@
 								<div class="blog-desc-big">
 									<p id="architecture" class="lead">Architecture</p>
 									<p class="article-text"> 
-										To model the structure of a kripke model, we use python dictionaries.
-										Keys in the dictionaries are propositionals for each world, with exception of the agent key which defines the agent relation. Keys are nested, by following the structure the keys are added to define the values of the propositionals of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>], here <b>not</b> can be seen as removed from the model.
-										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>, the keys are ordered in this structure as a possible group is know first and is of higher order then a single card, optimizing the search for possible options.
+										To model the structure of a Kripke model, we use python dictionaries.
+										Keys in the dictionaries are representative of propositional atoms in each world, with exception of the agent key which defines the agent relation. Keys are nested; by following the structure the keys are added to define the values of the propositional atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>];, here <b>not</b> can be seen as removed from the model.
+										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>. The reasoning behind the key ordering in our data structure is that, a possible group is know by an agent before a single card is known. Furthermore a card group is of higher order then a card, optimizing the search for possible options.
 										If a card is known, the group is known, so there is no option of a known card in a <b>M</b> or <b>deleted</b> group.
 									</p>
 									<div class="blog-media">
@@ -190,7 +188,7 @@
 									</p>
 									<p class="article-text">
 										To make the relation with kripke models more specific, we show in Figure 2 a kripke model with the corresponding data structure that we use in Figure 3.
-										In this example we have 3 players and one group of cards. Player B starts with 2 cards and player A and C start with 1 card. Player A then asks player C for card 1 after which player C announces she does not have this card.
+										In this example we have three players and one group of cards. Player B starts with two cards and player A and C start with one card. Player A then asks player C for card 1 after which player C announces she does not have this card.
 										The data structure is only shown for player A, we have similar data structures for player B and C.
 									</p>
 									<div class="blog-media">
@@ -202,7 +200,7 @@
 									<div class="blog-media">
 										<figure>
 											<img id="figure3" src="../images/model.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.3 - Kripke model datastructure for player A.</figcaption>
+											<figcaption>Fig.3 - Kripke model data structure for player A.</figcaption>
 										</figure>
 									</div><!-- end media -->
 									
@@ -222,7 +220,7 @@
 									<div class="blog-desc-big">
 									<p id="discussion" class="lead">Discussion</p>
 									<p class="article-text"> 
-										
+										We have chosen for a per agent model. As in our opinion this makes more sense in a real life situation.
 									</p>
 									
 									
@@ -236,9 +234,9 @@
 									<div class="blog-desc-big">
 									<p id="improvements" class="lead">Improvements</p>
 									<p class="article-text"> 
-										In our implementation of kwartet there is still much to improve in play and in performance, a few points we will list: 
+										In our implementation of kwartet there is still much to improve in play and in performance. A few points we will list: 
 										<ul>
-											<li class="article-text">In our datastructure all worlds are initialized, creating the largest possible kripke model, the behaviour of a kripke model is simulated by setting elements to removed when we make announcements. Dynamic world creation and removal in a datastructure might be more memory efficient and faster to process.</li>
+											<li class="article-text">In our data structure all worlds are initialized, creating the largest possible Kripke model. The behaviour of a Kripke model is simulated by setting elements to be removed when we make announcements. Dynamic world creation and removal in a data structure might be more memory efficient and faster to process.</li>
 											<br>
 											<li class="article-text">To create a more human like simulation, the simulation could add agents forgetting cards, this can be done by once in a while setting <b>K</b> propositionals to <b>M</b> in the kripke model.</li>
 											<br>
