@@ -63,7 +63,7 @@
 		<div class="container">
 			<div class="boxed">
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-md-9">
 						<div class="content blog-list">
 							<div class="blog-wrapper clearfix">
 								<div class="blog-meta">
@@ -128,7 +128,7 @@
 									<p class="article-text">   
 										<i>
 										Suppose Diego, Ruben and Tanja are playing a game of Kwartet. 
-										Like John, Diego knows nothing, starting the game by asking a random card and player, in this case Tanja for the 'smelly goat' card from the 'farm animals' group. 
+										Like John, Diego knows nothing, starting the game by asking a random card and player, in this case asking Tanja for the 'smelly goat' card from the 'farm animals' group. 
 										Even before Tanja gives an answer, the knowledge of the players changes. 
 										To see what happens with the knowledge we go through the first questions of this game step by step. 
 										</i>
@@ -172,7 +172,7 @@
 									<p id="architecture" class="lead">Architecture</p>
 									<p class="article-text"> 
 										To model the structure of a Kripke model, we use python dictionaries.
-										Keys in the dictionaries are representative of propositional atoms in each world, with exception of the agent key which defines the agent relation. Keys are nested; by following the structure the keys are added to define the values of the propositional atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>];, here <b>not</b> can be seen as removed from the model.
+										Keys in the dictionaries are representative of propositional atoms in each world, with exception of the agent key which defines the agent relation. Keys are nested; by following the structure the keys are added to define the values of the propositional atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>]; here <b>not</b> can be seen as removed from the model.
 										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>. The reasoning behind the key ordering in our data structure is that, a possible group is know by an agent before a single card is known. Furthermore a card group is of higher order then a card, optimizing the search for possible options.
 										If a card is known, the group is known, so there is no option of a known card in a <b>M</b> or <b>deleted</b> group.
 									</p>
@@ -208,19 +208,33 @@
 									<div class="blog-desc-big">
 									<p id="actions" class="lead">Actions</p>
 									<p class="article-text"> 
-											There are 4 actions that influence the knowledge structure:
+										There are 5 actions that influence the knowledge structure (model):
 											<ul>
-												<li class="article-text"> (Private) Seeing own cards </li>
-												<li class="article-text"> (Announcement) Requesting a card </li>
-												<li class="article-text"> (Announcement) Giving a card </li>
-												<li class="article-text"> (Announcement) Not giving a card </li>
+												<li class="article-text"> <b>(Private) Seeing own cards</b>: 
+													By the basic step of looking at which cards an agent has in his hand, we can update the model by removing worlds were these cards are owned by other players. This step is private for each individual agent.
+												</li>
+												<br>
+												<li class="article-text"> <b>(Announcement) Requesting a card:</b> According the rules requesting a card can only be done when you have a card from the group. This is a public move, so for each agent we update the model, replacing <b>M</b>(requested_group) because we have <b>K</b>(requested_group) for that agent </li>
+												<br>
+												<li class="article-text"> <b>(Announcement) Giving a card:</b> Giving a card is one of the most important announcements. After this action we update the model for each agent, that we know the specific group and card for the card receiving agent and remove it for all other agents in that model. Less obvious but still important is that we also have to update each agent that the giving player to <b>M</b>(group) if that was it's only known card. </li>
+												<br>
+												<li class="article-text"> <b>(Announcement) Not giving a card:</b> We update the model of each agent by removing the world were the asked agent has this card from the model. </li>
+												<br>
+												<li class="article-text"> <b>(Announcement) Kwartet!:</b> We update each agent model by removing the group entirely from the model.</li>
 											</ul>
-										</p>
+									</p>
+									<br>
+									<p class="article-text">		
+										Furthermore we have 1 action that does not change the model but uses second order logic:
+											<ul> 
+												<li class="article-text"> <b>(Private) Assess model (advanced thinking, not applied for all agents):</b> By individually looking at what other agents know, the agent tries a different strategy of asking cards in the model. </li>
+											</ul>
+									</p>
 									
 									<div class="blog-desc-big">
 									<p id="discussion" class="lead">Discussion</p>
 									<p class="article-text"> 
-										We have chosen for a per agent model. As in our opinion this makes more sense in a real life situation.
+										We have chosen for a model per agent instead of one full model containing all worlds and agent relations. In our opinion an per agent model makes more sense, as in a real life situations agents are isolated, therefore an agent cannot easily rely on a model that is shared with mulitple agents. A model per agent gives the extra flexibility of fully isolated decision making.
 									</p>
 									
 									
