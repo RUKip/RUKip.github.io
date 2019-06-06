@@ -81,6 +81,9 @@
 										<li><a href="#example">Example game loop</a></li>
 										<li><a href="#architecture">Architecture</a></li>
 										<li><a href="#actions">Actions</a></li>
+										<li><a href="#actions">Discussion</a></li>
+										<li><a href="#actions">Conclusion</a></li>
+										<li><a href="#actions">Improvements</a></li>
 									</ul>
 
 								</div><!-- end desc -->
@@ -241,7 +244,8 @@
 									<div class="blog-desc-big">
 									<p id="conclusion" class="lead">Conclusion</p>
 									<p class="article-text"> 
-										
+										The simulation works as expected, however there is still a lot of improvements possible as we will mention in the <a href="#improvements">improvements</a> section.
+										Our simulation does not manage to solve higher logic then second order, for the game of kwartet this is not a needed skill. The second order logic can be usefull in cases like, when an agent uses the fact that another agent knows his card, trying to get a kwartet for this card as soon as possible.   
 									</p>
 									
 									
@@ -250,6 +254,8 @@
 									<p class="article-text"> 
 										In our implementation of kwartet there is still much to improve in play and in performance. A few points we will list: 
 										<ul>
+											<li class="article-text">Our simulation has no implementation for drawing cards as is normal in regular kwartet. This means however that on different announcements and actions the model changes diffferently as it might be that cards are still in the deck.</li>
+											<br>
 											<li class="article-text">In our data structure all worlds are initialized, creating the largest possible Kripke model. The behaviour of a Kripke model is simulated by setting elements to be removed when we make announcements. Dynamic world creation and removal in a data structure might be more memory efficient and faster to process.</li>
 											<br>
 											<li class="article-text">To create a more human like simulation, the simulation could add agents forgetting cards, this can be done by once in a while setting <b>K</b> propositionals to <b>M</b> in the kripke model.</li>
