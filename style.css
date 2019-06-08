@@ -513,7 +513,7 @@ MEGA MENU
 }
 
 .yamm .dropdown .dropdown-menu .show-left {
-    margin-top: 0
+    margin-top: 0;
 }
 
 .yamm ul {
@@ -817,6 +817,23 @@ teammembers .magnifier {
 CONTACT
 ******************************************/
 
+.photobox.boxed{
+	position: absolute;
+    top: 70px;
+    right: 70px;
+}
+
+.photobox div{
+	text-align: center;
+	font-size: 70%;
+	padding: 5px;
+}
+
+ul.experiences{
+	list-style-type:square;
+	background:#ebebe0;
+}
+
 .contactv2 {
     margin: 60px 0;
 }
@@ -977,7 +994,7 @@ SECTIONS
 
 .boxed {
     box-shadow: 0 30px 50px 0 rgba(1, 1, 1, 0.18);
-    padding: 8rem 4rem 8rem;
+    padding: 8rem 4rem 4rem;
     background-color: #ffffff;
     margin-top: -60px;
 }
