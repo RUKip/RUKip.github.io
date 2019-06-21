@@ -247,17 +247,17 @@
                                         </figure>
                                     </div><!-- end media -->
                                     <p class="article-text">
-                                        To make the relation with kripke models more specific, we show in <a href="#figure3">Figure 3</a>
-                                        a kripke model with the corresponding data structure that we use in <a href="#figure4">Figure 4</a>.
-                                        In this example we have three players and one group of cards. Player B starts
-                                        with two cards and player A and C start with one card. Player A then asks player
-                                        C for card 1 after which player C announces she does not have this card.
-                                        The data structure is only shown for player A, we have similar data structures
-                                        for player B and C.
+                                        To make the relation with Kripke models more specific, we show in
+                                        <a href="#figure3">Figure 3</a> a Kripke model with the corresponding data
+                                        structure that we use in <a href="#figure4">Figure 4</a>. In this example we
+                                        have three players and one group of cards. Player B starts with two cards and
+                                        player A and C start with one card. Player A then asks player C for card 1 after
+                                        which player C announces she does not have this card. The data structure is only
+                                        shown for player A, we have similar data structures for player B and C.
                                     </p>
                                     <div class="blog-media">
                                         <figure>
-                                            <img id="figure3" src="../images/kripke.png" alt=""
+                                            <img id="figure3" src="../images/Kripke.png" alt=""
                                                  class="img-responsive img-rounded">
                                             <figcaption>Fig.3 - Kripke model, where the double circle is the true world.
                                                 A1 means that player A has card 1.
@@ -284,22 +284,22 @@
                                             players. This step is private for each individual agent.
                                         </li>
                                         <br>
-                                        <li class="article-text"><b>(Announcement) Requesting a card:</b> According to the
-                                            rules, requesting a card can only be done when you have a card from the
+                                        <li class="article-text"><b>(Announcement) Requesting a card:</b> According to
+                                            the rules, requesting a card can only be done when you have a card from the
                                             group. This is a public announcement, so for each agent we update the model,
                                             replacing <b>M</b>(requested_group) because we have <b>K</b>(requested_group)
-                                            for that agent
+                                            for that agent.
                                         </li>
                                         <br>
                                         <li class="article-text"><b>(Announcement) Giving a card:</b> Giving a card is
                                             one of the most important announcements. After this action we update the
                                             model for each agent. Every agent knows that the player that was asked for
-                                            the card does not have it any more. Every agent also knows that the player that
-                                            asked for the card, has it now. Furthermore, they know that the agent that
-                                            was asked for the card might not have cards of the mentioned group any
+                                            the card does not have it any more. Every agent also knows that the player
+                                            that asked for the card, has it now. Furthermore, they know that the agent
+                                            that was asked for the card might not have cards of the mentioned group any
                                             longer. So, unless a player knows with certainty that the player who was
                                             requested a card has other cards of that group, he will set the group state
-                                            for that player to <b>M</b>(group)
+                                            for that player to <b>M</b>(group).
                                         </li>
                                         <br>
                                         <li class="article-text"><b>(Announcement) Not giving a card:</b> We update the
@@ -350,12 +350,11 @@
                                             <p class="article-text">
                                                 The simulation works as expected, however there is still a lot of
                                                 improvements possible as we will mention in the <a href="#improvements">improvements</a>
-                                                section.
-                                                Our simulation does not manage to solve higher logic then second order,
-                                                but for the game of Kwartet this is not a very important skill. The
-                                                second order logic can be useful in cases like, when an agent uses the
-                                                fact that another agent knows his card, trying to get a Kwartet for this
-                                                card as soon as possible.
+                                                section. Our simulation does not manage to solve higher logic then
+                                                second order, but for the game of Kwartet this is not a very important
+                                                skill. The second order logic can be useful in cases like, when an agent
+                                                uses the fact that another agent knows his card, trying to get a Kwartet
+                                                for this card as soon as possible.
                                                 <br><br>
                                                 TODO: finish below
                                                 <br><br>
@@ -371,8 +370,8 @@
                                                 <p id="improvements" class="lead">Improvements</p>
                                                 <p class="article-text">
                                                     In our implementation of this simulation of Kwartet there are still
-                                                    things to improve in play style and in performance. We will list a few
-                                                    points:
+                                                    things to improve in play style and in performance. We will list a
+                                                    few points:
                                                 <ul>
                                                     <li class="article-text">Our simulation has no implementation for
                                                         drawing cards as is normal in regular Kwartet. This means
