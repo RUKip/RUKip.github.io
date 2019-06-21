@@ -230,25 +230,25 @@
                                     </div><!-- end media -->
                                     <p class="article-text">
                                         While playing different strategies we require to look at different observables,
-                                        as an example we need to look not only at cards but also at card groups.
-                                        In our model we require a seperate model for each of these observables, this is
-                                        because of a limitation in our datastructure. We cannot "remove" a world in the
-                                        model without affecting worlds that should still be accesble from other worlds.
-                                        As an example we cannot remove a group for one agent without removing the group
-                                        for all agents.
+                                        as an example we need to look not only at cards but also at card groups
+                                        (<a href="#figure-model-group">Figure 2</a>).In our model we require a seperate
+                                        model for each of these observables, this is because of a limitation in our
+                                        datastructure. We cannot "remove" a world in the model without affecting worlds
+                                        that should still be accesble from other worlds. As an example we cannot remove
+                                        a group for one agent without removing the group for all agents.
                                         <!-- possible improvement here, can be added to improvement section -->
                                     </p>
                                     <div class="blog-media">
                                         <figure>
-                                            <img id="figure1" style="width: 600px"
+                                            <img id="figure-model-group" style="width: 600px"
                                                  src="../images/data_structure_groups.png" alt=""
                                                  class="img-responsive img-rounded">
-                                            <figcaption>Fig.1 - Group model data structure.</figcaption>
+                                            <figcaption>Fig.2 - Group model data structure.</figcaption>
                                         </figure>
                                     </div><!-- end media -->
                                     <p class="article-text">
-                                        To make the relation with kripke models more specific, we show in Figure 2 a
-                                        kripke model with the corresponding data structure that we use in Figure 3.
+                                        To make the relation with kripke models more specific, we show in <a href="#figure3">Figure 3</a>
+                                        a kripke model with the corresponding data structure that we use in <a href="#figure4">Figure 4</a>.
                                         In this example we have three players and one group of cards. Player B starts
                                         with two cards and player A and C start with one card. Player A then asks player
                                         C for card 1 after which player C announces she does not have this card.
@@ -257,18 +257,18 @@
                                     </p>
                                     <div class="blog-media">
                                         <figure>
-                                            <img id="figure2" src="../images/kripke.png" alt=""
+                                            <img id="figure3" src="../images/kripke.png" alt=""
                                                  class="img-responsive img-rounded">
-                                            <figcaption>Fig.2 - Kripke model, where the double circle is the true world.
+                                            <figcaption>Fig.3 - Kripke model, where the double circle is the true world.
                                                 A1 means that player A has card 1.
                                             </figcaption>
                                         </figure>
                                     </div><!-- end media -->
                                     <div class="blog-media">
                                         <figure>
-                                            <img id="figure3" src="../images/model.png" alt=""
+                                            <img id="figure4" src="../images/model.png" alt=""
                                                  class="img-responsive img-rounded">
-                                            <figcaption>Fig.3 - Kripke model data structure for player A.</figcaption>
+                                            <figcaption>Fig.4 - Kripke model data structure for player A.</figcaption>
                                         </figure>
                                     </div><!-- end media -->
 
@@ -280,23 +280,26 @@
                                     <ul>
                                         <li class="article-text"><b>(Private) Seeing own cards</b>:
                                             By the basic step of looking at which cards an agent has in his hand, we can
-                                            update the model by removing worlds were these cards are owned by other
+                                            update the model by removing worlds where these cards are owned by other
                                             players. This step is private for each individual agent.
                                         </li>
                                         <br>
-                                        <li class="article-text"><b>(Announcement) Requesting a card:</b> According the
-                                            rules requesting a card can only be done when you have a card from the
-                                            group. This is a public move, so for each agent we update the model,
+                                        <li class="article-text"><b>(Announcement) Requesting a card:</b> According to the
+                                            rules, requesting a card can only be done when you have a card from the
+                                            group. This is a public announcement, so for each agent we update the model,
                                             replacing <b>M</b>(requested_group) because we have <b>K</b>(requested_group)
                                             for that agent
                                         </li>
                                         <br>
                                         <li class="article-text"><b>(Announcement) Giving a card:</b> Giving a card is
                                             one of the most important announcements. After this action we update the
-                                            model for each agent, that we know the specific group and card for the card
-                                            receiving agent and remove it for all other agents in that model. Less
-                                            obvious but still important is that we also have to update each agent that
-                                            the giving player to <b>M</b>(group) if that was it's only known card.
+                                            model for each agent. Every agent knows that the player that was asked for
+                                            the card does not have it any more. Every agent also knows that the player that
+                                            asked for the card, has it now. Furthermore, they know that the agent that
+                                            was asked for the card might not have cards of the mentioned group any
+                                            longer. So, unless a player knows with certainty that the player who was
+                                            requested a card has other cards of that group, he will set the group state
+                                            for that player to <b>M</b>(group)
                                         </li>
                                         <br>
                                         <li class="article-text"><b>(Announcement) Not giving a card:</b> We update the
@@ -324,19 +327,19 @@
                                     <div class="blog-desc-big">
                                         <p id="discussion" class="lead">Discussion</p>
                                         <p class="article-text">
-                                            We have chosen for a model per agent instead of one full model containing
-                                            all worlds and agent relations. In our opinion an per agent model makes more
-                                            sense, as in a real life situations agents are isolated, therefore an agent
-                                            cannot easily rely on a model that is shared with mulitple agents. A model
+                                            We have chosen a model per agent instead of one full model containing
+                                            all worlds and agent relations. In our opinion a per agent model makes more
+                                            sense, as in real life situations agents are isolated, therefore an agent
+                                            cannot easily rely on a model that is shared with multiple agents. A model
                                             per agent gives the extra flexibility of fully isolated decision making.
                                             <br>
                                             When implementing different strategies, it is depended on what strategies
                                             the other agents play to have a bigger chance at winning. Finding the best
-                                            and most reselient strategy was not our goal, but might be very good
+                                            and most resilient strategy was not our goal, but might be very good
                                             continuation of this project.
                                             <br>
-                                            The python Random library as with all random functions is a Psuedo-Random
-                                            function this means the randomization is determenistic. We however do
+                                            The python Random library as with all random functions is a Pseudo-Random
+                                            function this means the randomization is deterministic. We however do
                                             consider the randomization in card division and unknown card choice as fully
                                             random.
                                         </p>
@@ -349,10 +352,10 @@
                                                 improvements possible as we will mention in the <a href="#improvements">improvements</a>
                                                 section.
                                                 Our simulation does not manage to solve higher logic then second order,
-                                                for the game of kwartet this is not a very important skill. The second
-                                                order logic can be usefull in cases like, when an agent uses the fact
-                                                that another agent knows his card, trying to get a kwartet for this card
-                                                as soon as possible.
+                                                but for the game of Kwartet this is not a very important skill. The
+                                                second order logic can be useful in cases like, when an agent uses the
+                                                fact that another agent knows his card, trying to get a Kwartet for this
+                                                card as soon as possible.
                                                 <br><br>
                                                 TODO: finish below
                                                 <br><br>
@@ -367,13 +370,14 @@
                                             <div class="blog-desc-big">
                                                 <p id="improvements" class="lead">Improvements</p>
                                                 <p class="article-text">
-                                                    In our implementation of kwartet there is still much to improve in
-                                                    play and in performance. A few points we will list:
+                                                    In our implementation of this simulation of Kwartet there are still
+                                                    things to improve in play style and in performance. We will list a few
+                                                    points:
                                                 <ul>
                                                     <li class="article-text">Our simulation has no implementation for
-                                                        drawing cards as is normal in regular kwartet. This means
+                                                        drawing cards as is normal in regular Kwartet. This means
                                                         however that on different announcements and actions the model
-                                                        changes diffferently as it might be that cards are still in the
+                                                        changes differently as it might be that cards are still in the
                                                         deck.
                                                     </li>
                                                     <br>
@@ -387,14 +391,14 @@
                                                     <br>
                                                     <li class="article-text">To create a more human like simulation, the
                                                         simulation could add agents forgetting cards, this can be done
-                                                        by once in a while setting <b>K</b> propositionals to <b>M</b>
-                                                        in the kripke model.
+                                                        by once in a while setting propositionals to <b>M</b> with a
+                                                        probability <b><em>P</em></b> in the model.
                                                     </li>
                                                     <br>
                                                     <li class="article-text">Agents now choose to pick cards they know,
-                                                        however it might be more benificial to play with different or
-                                                        alternating strategies. So might it be better for an agent to
-                                                        wait with asking for some card, untill all players are known to
+                                                        however it might be more beneficial to play with different or
+                                                        alternative strategies. It might be better for an agent to
+                                                        wait for asking for a card, until all players are known to
                                                         have that group, keeping their group a secret.
                                                     </li>
                                                 </ul>
