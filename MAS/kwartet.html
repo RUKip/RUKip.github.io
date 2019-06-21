@@ -91,11 +91,11 @@
 								<div class="blog-desc-big">
 									<p id="intro" class="lead">Introduction</p>
 									<p class="article-text">
-										Kwartet is a card game that requires the players to use logic to win, in this game the goal is to collect sets of cards in the same group, also called a kwartet, by asking other players for cards.
-										The game requires knowledge of your own cards, the card set and the asked questions to figure out which player has the cards you require for completing a set.
+										Kwartet is a card game that requires the players to use logic to win. In this game the goal is to collect sets of cards of the same group, also called a kwartet, by asking other players for cards.
+										The game requires knowledge of your own cards, the card set and the previous asked cards to figure out which player has the cards you require for completing a Kwartet.
 									</p>
 									<p class="article-text">
-										The simulation is programmed in python and uses only the python standard library. The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
+										The simulation is programmed in Python 3 and uses only the Python standard library. The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
 										The simulation is tracked by logging steps from the simulation to a log file. Furthermore we added graph generation of the indivdual agent models, the models can be found in the "knowledge-graphs" directory, created upon running the program. 
 									</p>
 
@@ -112,18 +112,21 @@
 							
 									<p class="article-text">
 										The game of Kwartet is played in random order. 
-										That is, after a player finishes his turn, the player last asked a card starts his turn. On your turn, you can ask for a card of any other player. 
-										If the other player does not have the card, your turn is over and his will start. If the other player does have the card he has to give the card to you, and you may ask another question to any of the players. 
-										Your turn ends at the moment you get no as an answer. 
-										The game has two more rules. Firstly, you can only ask for a card if you have a card of the same group. 
-										So, you are only allowed to ask for ‘a fat cow’ if you own at least one of the other ‘farm animals’ cards.
-										Secondly, which may be the most important rule of Kwartet, you are not allowed to lie. 
+										That is, after a player finishes his turn, the player last asked a card starts 
+										his turn. On your turn, you can ask for a card to any other player. 
+										If the other player does not have the card, your turn is over and his will start. 
+										If the other player does have the card, he has to give the card to you and you 
+										may ask another question to any of the players. Your turn ends at the moment you
+										get no as an answer. The game has two more rules. Firstly, you can only ask for 
+										a card if you have a card of the same group. So, you are only allowed to ask for
+										‘a fat cow’ if you own at least one of the other ‘farm animals’ cards. Secondly,
+										which may be the most important rule of Kwartet, you are not allowed to lie. 
 										If someone asks you for a card that you own, you have to give him the card.
 										<br><br>
-										Every group consists of 4 cards. 
-										If you have collected all cards from a group, you earn 1 point and the group is out of the game. 
-										The game ends if all groups are collected and there are no cards left in the game. 
-										The player with the most points, i.e. the player that collected the most groups is the winner. 
+										Every group consists of 4 cards. If you have collected all cards from a group,
+										you earn 1 point and the group is out of the game. The game ends if all groups
+										are collected and there are no cards left in the game. The player with the most 
+										points, i.e. the player that collected the most groups is the winner.
 									</p>
 								
 								<div class="blog-desc-big">
@@ -131,7 +134,8 @@
 									<p class="article-text">   
 										<i>
 										Suppose Diego, Ruben and Tanja are playing a game of Kwartet. 
-										Like John, Diego knows nothing, starting the game by asking a random card and player, in this case asking Tanja for the 'smelly goat' card from the 'farm animals' group. 
+										Like John Snow, Diego knows nothing, starting the game by asking a random card to a random player. 
+										In this case he asked Tanja for the 'smelly goat' card from the 'farm animals' group. 
 										Even before Tanja gives an answer, the knowledge of the players changes. 
 										To see what happens with the knowledge we go through the first questions of this game step by step. 
 										</i>
@@ -146,7 +150,7 @@
 										<b>Tanja:</b> “No.”
 										<br><br>
 										<i>
-										From this point it is common knowledge that Tanja does not have the ‘smelly goat’ card, so everyone now removes the possiblity in their model that Tanja has a smelly goat.
+										From this point it is common knowledge that Tanja does not have the ‘smelly goat’ card, so everyone now removes the possiblity in their model that Tanja has a ‘smelly goat’ card.
 										</i>
 										<br><br> 
 										Diego’s turn is over, it is Tanja's turn.
@@ -175,20 +179,38 @@
 									<p id="architecture" class="lead">Architecture</p>
 									<p class="article-text"> 
 										To model the structure of a Kripke model, we use python dictionaries.
-										Keys in the dictionaries are representative of propositional atoms in each world, with exception of the agent key which defines the agent relation. Keys are nested; by following the structure the keys are added to define the values of the propositional atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>]; here <b>not</b> can be seen as removed from the model.
-										A visualisation of the structure can be found in <a href="#figure1">figure 1</a>. The reasoning behind the key ordering in our data structure is that, a possible group is know by an agent before a single card is known. Furthermore a card group is of higher order then a card, optimizing the search for possible options.
-										If a card is known, the group is known, so there is no option of a known card in a <b>M</b> or <b>deleted</b> group.
+										Keys in the dictionaries are representative of propositional atoms in each world, 
+										with exception of the agent key which defines the agent relation. Keys are nested; 
+										by following the structure the keys are added to define the values of the propositional 
+										atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>]; 
+										here <b>not</b> can be seen as removed from the model. A visualisation of the structure 
+										can be found in <a href="#figure1">Figure 1</a>. The reasoning behind the key ordering 
+										in our data structure is that, a possible group is know by an agent before a single 
+										card is known. Furthermore a card group is of higher order than a card, optimizing 
+										the search for possible options. If a card is known, the group is known, so there 
+										is no option of a known card in a <b>M</b> or <b>deleted</b> group.
 									</p>
 									<div class="blog-media">
 										<figure>
-											<img id="figure1" src="../images/data_structure.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.1 - Kripke model data structure.</figcaption>
+											<img id="figure1" src="../images/data_structure_cards.png" alt="" class="img-responsive img-rounded">
+											<figcaption>Fig.1 - Card model data structure.</figcaption>
 										</figure>
 									</div><!-- end media -->
 									<p class="article-text">
-										As we want to play our cards based on different startegies, we require not only to look at possible cards, but also other values such as which player owns which group. 
-										For each extra value we look at, we require a seperate model, as our data structure limits us, we cannot "remove" a world of the model without affecting worlds that should still be accesble from that world. <!-- possible improvement here, can be added to improvement section -->   
+										While playing different strategies we require to look at different observables, 
+										as an example we need to look not only at cards but also at card groups. 
+										In our model we require a seperate model for each of these observables, this is 
+										because of a limitation in our datastructure. We cannot "remove" a world in the 
+										model without affecting worlds that should still be accesble from other worlds.
+										As an example we cannot remove a group for one agent without removing the group for all agents.
+										<!-- possible improvement here, can be added to improvement section -->   
 									</p>
+									<div class="blog-media">
+										<figure>
+											<img id="figure1" style="width: 600px" src="../images/data_structure_groups.png" alt="" class="img-responsive img-rounded">
+											<figcaption>Fig.1 - Group model data structure.</figcaption>
+										</figure>
+									</div><!-- end media -->
 									<p class="article-text">
 										To make the relation with kripke models more specific, we show in Figure 2 a kripke model with the corresponding data structure that we use in Figure 3.
 										In this example we have three players and one group of cards. Player B starts with two cards and player A and C start with one card. Player A then asks player C for card 1 after which player C announces she does not have this card.
