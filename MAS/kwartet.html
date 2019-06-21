@@ -1,311 +1,417 @@
 <!doctype html>
-<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js " lang="en"> <!--<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js " lang="en"> <!--<![endif]-->
 <head>
 
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Mobile Meta -->
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <!-- Site Meta -->
     <title>MAS</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"/>
     <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 
-	<!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet"> 
-	
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet">
+
     <!-- Custom & Default Styles -->
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/carousel.css">
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../style.css">
 
-	<!--[if lt IE 9]>
-		<script src="js/vendor/html5shiv.min.js"></script>
-		<script src="js/vendor/respond.min.js"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <body>
-	
-	 <!-- LOADER -->
-    <div id="preloader">
-        <img class="preloader" src="../images/loader.gif" alt="">
-    </div><!-- end loader -->
-    <!-- END LOADER -->
-    
-	<header class="header header-normal">
-		<div class="topbar clearfix">
-			<div class="container">
-				<div class="row-fluid">
-					<div class="col-md-6 col-sm-6 text-middle">
-						<p>
-							<a href="../index.html">Home</a>
-						</p>
-					</div><!-- end left -->
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</div><!-- end topbar -->
-	</header>
 
-    <div id="wrapper">
-		<div class="container">
-			<div class="boxed">
-				<div class="row">
-					<div class="col-md-9">
-						<div class="content blog-list">
-							<div class="blog-wrapper clearfix">
-								<div class="blog-meta">
-									<h3>A Kwartet simulation using logic for multiple agents</h3>
-									<ul class="list-inline">
-										<li><span>written by</span> <a href="https://github.com/mrcabo" target="_blank">Diego Cabo</a> & <a href="https://github.com/TRebekka" target="_blank">Tanja de Vries</a> & <a href="https://github.com/RUKip" target="_blank">Ruben Kip</a></li>
-									</ul>
-								</div><!-- end blog-meta -->
+<!-- LOADER -->
+<div id="preloader">
+    <img class="preloader" src="../images/loader.gif" alt="">
+</div><!-- end loader -->
+<!-- END LOADER -->
 
-								<div class="blog-desc-big">
-									<p class="lead">Content</p>
-									<ul>
-										<li><a href="#intro">Introduction</a></li>
-										<li><a href="#rules">The rules of Kwartet</a></li>
-										<li><a href="#example">Example game loop</a></li>
-										<li><a href="#architecture">Architecture</a></li>
-										<li><a href="#actions">Actions</a></li>
-										<li><a href="#actions">Discussion</a></li>
-										<li><a href="#actions">Conclusion</a></li>
-										<li><a href="#actions">Improvements</a></li>
-									</ul>
+<header class="header header-normal">
+    <div class="topbar clearfix">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="col-md-6 col-sm-6 text-middle">
+                    <p>
+                        <a href="../index.html">Home</a>
+                    </p>
+                </div><!-- end left -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end topbar -->
+</header>
 
-								</div><!-- end desc -->
+<div id="wrapper">
+    <div class="container">
+        <div class="boxed">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="content blog-list">
+                        <div class="blog-wrapper clearfix">
+                            <div class="blog-meta">
+                                <h3>A Kwartet simulation using logic for multiple agents</h3>
+                                <ul class="list-inline">
+                                    <li><span>written by</span> <a href="https://github.com/mrcabo" target="_blank">Diego
+                                        Cabo</a> & <a href="https://github.com/TRebekka" target="_blank">Tanja de
+                                        Vries</a> & <a href="https://github.com/RUKip" target="_blank">Ruben Kip</a>
+                                    </li>
+                                </ul>
+                            </div><!-- end blog-meta -->
 
-								<div class="blog-desc-big">
-									<p id="intro" class="lead">Introduction</p>
-									<p class="article-text">
-										Kwartet is a card game that requires the players to use logic to win. In this game the goal is to collect sets of cards of the same group, also called a kwartet, by asking other players for cards.
-										The game requires knowledge of your own cards, the card set and the previous asked cards to figure out which player has the cards you require for completing a Kwartet.
-									</p>
-									<p class="article-text">
-										The simulation is programmed in Python 3 and uses only the Python standard library. The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
-										The simulation is tracked by logging steps from the simulation to a log file. Furthermore we added graph generation of the indivdual agent models, the models can be found in the "knowledge-graphs" directory, created upon running the program. 
-									</p>
+                            <div class="blog-desc-big">
+                                <p class="lead">Content</p>
+                                <ul>
+                                    <li><a href="#intro">Introduction</a></li>
+                                    <li><a href="#rules">The rules of Kwartet</a></li>
+                                    <li><a href="#example">Example game loop</a></li>
+                                    <li><a href="#architecture">Architecture</a></li>
+                                    <li><a href="#actions">Actions</a></li>
+                                    <li><a href="#actions">Discussion</a></li>
+                                    <li><a href="#actions">Conclusion</a></li>
+                                    <li><a href="#actions">Improvements</a></li>
+                                </ul>
 
-								</div><!-- end desc -->
+                            </div><!-- end desc -->
 
-								<div class="blog-desc-big">
-									<p id="intro" class="lead">The rules of Kwartet</p>
-									<p class="article-text">
-										Before we can let our agents play kwartet and apply a strategy to win, we need to know the rules of kwartet a bit better.  
-									</p>
-								<!--<div class="blog-media">
-									<img id="meme1" src="../images/lose.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
-								</div> end media -->
-							
-									<p class="article-text">
-										The game of Kwartet is played in random order. 
-										That is, after a player finishes his turn, the player last asked a card starts 
-										his turn. On your turn, you can ask for a card to any other player. 
-										If the other player does not have the card, your turn is over and his will start. 
-										If the other player does have the card, he has to give the card to you and you 
-										may ask another question to any of the players. Your turn ends at the moment you
-										get no as an answer. The game has two more rules. Firstly, you can only ask for 
-										a card if you have a card of the same group. So, you are only allowed to ask for
-										‘a fat cow’ if you own at least one of the other ‘farm animals’ cards. Secondly,
-										which may be the most important rule of Kwartet, you are not allowed to lie. 
-										If someone asks you for a card that you own, you have to give him the card.
-										<br><br>
-										Every group consists of 4 cards. If you have collected all cards from a group,
-										you earn 1 point and the group is out of the game. The game ends if all groups
-										are collected and there are no cards left in the game. The player with the most 
-										points, i.e. the player that collected the most groups is the winner.
-									</p>
-								
-								<div class="blog-desc-big">
-									<p id="example" class="lead">An example game loop</p>
-									<p class="article-text">   
-										<i>
-										Suppose Diego, Ruben and Tanja are playing a game of Kwartet. 
-										Like John Snow, Diego knows nothing, starting the game by asking a random card to a random player. 
-										In this case he asked Tanja for the 'smelly goat' card from the 'farm animals' group. 
-										Even before Tanja gives an answer, the knowledge of the players changes. 
-										To see what happens with the knowledge we go through the first questions of this game step by step. 
-										</i>
-										<br><br>   
-										<b>Diego:</b> “Tanja, do you have from ‘farm animals’ the ‘smelly goat’?”
-										<br><br>
-										<i>
-										Based on this announcement it is common knowledge that Diego has a card of the group ‘farm animals’, otherwise he would not be allowed to ask this question.
-										Moreover, it is common knowledge that he does not have the ‘smelly goat’ card.
-										</i>
-										<br><br>
-										<b>Tanja:</b> “No.”
-										<br><br>
-										<i>
-										From this point it is common knowledge that Tanja does not have the ‘smelly goat’ card, so everyone now removes the possiblity in their model that Tanja has a ‘smelly goat’ card.
-										</i>
-										<br><br> 
-										Diego’s turn is over, it is Tanja's turn.
-										<br><br>
-										<b>Tanja:</b> “Diego, do you have from ‘farm animals’ the ‘crazy pig’?”
-										<br><br>
-										<i>This time again it becomes common knowledge that Tanja has a card of the ‘farm animals’, but she does not have the ‘crazy pig’.</i> 
-										<br><br>
-										<b>Diego:</b> “Yes.”
-										<br><br>
-										Diego gives the ‘crazy pig’ card to Tanja.
-										<br><br>
-										<i>
-										Now it is common knowledge that Tanja has the ‘crazy pig’. <br>
-										It is common knowledge Diego & Ruben do not have the ‘crazy pig’. <br>
-										Moreover, Ruben and Tanja no longer know whether Diego has a ‘farm animals’ card.<br>
-										</i>
-									</p>
-								</div><!-- end desc -->
-								
-								<!--<div class="blog-media">
-									<img id="meme2" src="../images/knowing.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
-								</div> end media -->
-								
-								<div class="blog-desc-big">
-									<p id="architecture" class="lead">Architecture</p>
-									<p class="article-text"> 
-										To model the structure of a Kripke model, we use python dictionaries.
-										Keys in the dictionaries are representative of propositional atoms in each world, 
-										with exception of the agent key which defines the agent relation. Keys are nested; 
-										by following the structure the keys are added to define the values of the propositional 
-										atoms of a world. The final value is an Operator of the K language, [<b>M</b>,<b>K</b>,<b>not</b>]; 
-										here <b>not</b> can be seen as removed from the model. A visualisation of the structure 
-										can be found in <a href="#figure1">Figure 1</a>. The reasoning behind the key ordering 
-										in our data structure is that, a possible group is know by an agent before a single 
-										card is known. Furthermore a card group is of higher order than a card, optimizing 
-										the search for possible options. If a card is known, the group is known, so there 
-										is no option of a known card in a <b>M</b> or <b>deleted</b> group.
-									</p>
-									<div class="blog-media">
-										<figure>
-											<img id="figure1" src="../images/data_structure_cards.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.1 - Card model data structure.</figcaption>
-										</figure>
-									</div><!-- end media -->
-									<p class="article-text">
-										While playing different strategies we require to look at different observables, 
-										as an example we need to look not only at cards but also at card groups. 
-										In our model we require a seperate model for each of these observables, this is 
-										because of a limitation in our datastructure. We cannot "remove" a world in the 
-										model without affecting worlds that should still be accesble from other worlds.
-										As an example we cannot remove a group for one agent without removing the group for all agents.
-										<!-- possible improvement here, can be added to improvement section -->   
-									</p>
-									<div class="blog-media">
-										<figure>
-											<img id="figure1" style="width: 600px" src="../images/data_structure_groups.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.1 - Group model data structure.</figcaption>
-										</figure>
-									</div><!-- end media -->
-									<p class="article-text">
-										To make the relation with kripke models more specific, we show in Figure 2 a kripke model with the corresponding data structure that we use in Figure 3.
-										In this example we have three players and one group of cards. Player B starts with two cards and player A and C start with one card. Player A then asks player C for card 1 after which player C announces she does not have this card.
-										The data structure is only shown for player A, we have similar data structures for player B and C.
-									</p>
-									<div class="blog-media">
-										<figure>
-											<img id="figure2" src="../images/kripke.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.2 - Kripke model, where the double circle is the true world. A1 means that player A has card 1.</figcaption>
-										</figure>
-									</div><!-- end media -->
-									<div class="blog-media">
-										<figure>
-											<img id="figure3" src="../images/model.png" alt="" class="img-responsive img-rounded">
-											<figcaption>Fig.3 - Kripke model data structure for player A.</figcaption>
-										</figure>
-									</div><!-- end media -->
-									
-								</div><!-- end desc -->
-									<div class="blog-desc-big">
-									<p id="actions" class="lead">Actions</p>
-									<p class="article-text"> 
-										There are 5 actions that influence the knowledge structure (model):
-											<ul>
-												<li class="article-text"> <b>(Private) Seeing own cards</b>: 
-													By the basic step of looking at which cards an agent has in his hand, we can update the model by removing worlds were these cards are owned by other players. This step is private for each individual agent.
-												</li>
-												<br>
-												<li class="article-text"> <b>(Announcement) Requesting a card:</b> According the rules requesting a card can only be done when you have a card from the group. This is a public move, so for each agent we update the model, replacing <b>M</b>(requested_group) because we have <b>K</b>(requested_group) for that agent </li>
-												<br>
-												<li class="article-text"> <b>(Announcement) Giving a card:</b> Giving a card is one of the most important announcements. After this action we update the model for each agent, that we know the specific group and card for the card receiving agent and remove it for all other agents in that model. Less obvious but still important is that we also have to update each agent that the giving player to <b>M</b>(group) if that was it's only known card. </li>
-												<br>
-												<li class="article-text"> <b>(Announcement) Not giving a card:</b> We update the model of each agent by removing the world were the asked agent has this card from the model. </li>
-												<br>
-												<li class="article-text"> <b>(Announcement) Kwartet!:</b> We update each agent model by removing the group entirely from the model.</li>
-											</ul>
-									</p>
-									<br>
-									<p class="article-text">		
-										Furthermore we have 1 action that does not change the model but uses second order logic:
-											<ul> 
-												<li class="article-text"> <b>(Private) Assess model (advanced thinking, not applied for all agents):</b> By individually looking at what other agents know, the agent tries a different strategy of asking cards in the model. </li>
-											</ul>
-									</p>
-									
-									<div class="blog-desc-big">
-									<p id="discussion" class="lead">Discussion</p>
-									<p class="article-text"> 
-										We have chosen for a model per agent instead of one full model containing all worlds and agent relations. In our opinion an per agent model makes more sense, as in a real life situations agents are isolated, therefore an agent cannot easily rely on a model that is shared with mulitple agents. A model per agent gives the extra flexibility of fully isolated decision making. <br>
-										When implementing different strategies, it is depended on what strategies the other agents play to have a bigger chance at winning. Finding the best and most reselient strategy was not our goal, but might be very good continuation of this project.
-										<br>
-										The python Random library as with all random functions is a Psuedo-Random function this means the randomization is determenistic. We however do consider the randomization in card division and unknown card choice as fully random. 
-									</p>
-									
-									
-									<div class="blog-desc-big">
-									<p id="conclusion" class="lead">Conclusion</p>
-									<p class="article-text"> 
-										The simulation works as expected, however there is still a lot of improvements possible as we will mention in the <a href="#improvements">improvements</a> section. 
-										Our simulation does not manage to solve higher logic then second order, for the game of kwartet this is not a very important skill. The second order logic can be usefull in cases like, when an agent uses the fact that another agent knows his card, trying to get a kwartet for this card as soon as possible.   
-										<br><br>
-										TODO: finish below
-										<br><br>
-										From the strategies we implemented, we concluded that ... is the best strategy, although as mentioned earlier in the discussion this is very dependent. 
-										Adding second order logic, is usefull for agents to win games as can be seen in the results. ..
-									</p>
-									
-									
-									<div class="blog-desc-big">
-									<p id="improvements" class="lead">Improvements</p>
-									<p class="article-text"> 
-										In our implementation of kwartet there is still much to improve in play and in performance. A few points we will list: 
-										<ul>
-											<li class="article-text">Our simulation has no implementation for drawing cards as is normal in regular kwartet. This means however that on different announcements and actions the model changes diffferently as it might be that cards are still in the deck.</li>
-											<br>
-											<li class="article-text">In our data structure all worlds are initialized, creating the largest possible Kripke model. The behaviour of a Kripke model is simulated by setting elements to be removed when we make announcements. Dynamic world creation and removal in a data structure might be more memory efficient and faster to process.</li>
-											<br>
-											<li class="article-text">To create a more human like simulation, the simulation could add agents forgetting cards, this can be done by once in a while setting <b>K</b> propositionals to <b>M</b> in the kripke model.</li>
-											<br>
-											<li class="article-text">Agents now choose to pick cards they know, however it might be more benificial to play with different or alternating strategies. So might it be better for an agent to wait with asking for some card, untill all players are known to have that group, keeping their group a secret.</li>
-										</ul>
-									</p>
-								</div><!-- end desc -->
-							</div><!-- end blog wrapper -->
-						</div><!-- end content -->
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end box -->
-		</div><!-- end container -->
-	</div><!-- end wrapper -->
-	
-    <!-- jQuery Files -->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/animate.js"></script>
-    <script src="../js/custom.js"></script>
+                            <div class="blog-desc-big">
+                                <p id="intro" class="lead">Introduction</p>
+                                <p class="article-text">
+                                    Kwartet is a card game that requires the players to use logic to win. In this game
+                                    the goal is to collect sets of cards of the same group, also called a kwartet, by
+                                    asking other players for cards.
+                                    The game requires knowledge of your own cards, the card set and the previous asked
+                                    cards to figure out which player has the cards you require for completing a Kwartet.
+                                </p>
+                                <p class="article-text">
+                                    The simulation is programmed in Python 3 and uses only the Python standard library.
+                                    The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
+                                    The simulation is tracked by logging steps from the simulation to a log file.
+                                    Furthermore we added graph generation of the indivdual agent models, the models can
+                                    be found in the "knowledge-graphs" directory, created upon running the program.
+                                </p>
+
+                            </div><!-- end desc -->
+
+                            <div class="blog-desc-big">
+                                <p id="intro" class="lead">The rules of Kwartet</p>
+                                <p class="article-text">
+                                    Before we can let our agents play kwartet and apply a strategy to win, we need to
+                                    know the rules of kwartet a bit better.
+                                </p>
+                                <!--<div class="blog-media">
+                                    <img id="meme1" src="../images/lose.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
+                                </div> end media -->
+
+                                <p class="article-text">
+                                    The game of Kwartet is played in random order.
+                                    That is, after a player finishes his turn, the player last asked a card starts
+                                    his turn. On your turn, you can ask for a card to any other player.
+                                    If the other player does not have the card, your turn is over and his will start.
+                                    If the other player does have the card, he has to give the card to you and you
+                                    may ask another question to any of the players. Your turn ends at the moment you
+                                    get no as an answer. The game has two more rules. Firstly, you can only ask for
+                                    a card if you have a card of the same group. So, you are only allowed to ask for
+                                    ‘a fat cow’ if you own at least one of the other ‘farm animals’ cards. Secondly,
+                                    which may be the most important rule of Kwartet, you are not allowed to lie.
+                                    If someone asks you for a card that you own, you have to give him the card.
+                                    <br><br>
+                                    Every group consists of 4 cards. If you have collected all cards from a group,
+                                    you earn 1 point and the group is out of the game. The game ends if all groups
+                                    are collected and there are no cards left in the game. The player with the most
+                                    points, i.e. the player that collected the most groups is the winner.
+                                </p>
+
+                                <div class="blog-desc-big">
+                                    <p id="example" class="lead">An example game loop</p>
+                                    <p class="article-text">
+                                        <i>
+                                            Suppose Diego, Ruben and Tanja are playing a game of Kwartet.
+                                            Like John Snow, Diego knows nothing, starting the game by asking a random
+                                            card to a random player.
+                                            In this case he asked Tanja for the 'smelly goat' card from the 'farm
+                                            animals' group.
+                                            Even before Tanja gives an answer, the knowledge of the players changes.
+                                            To see what happens with the knowledge we go through the first questions of
+                                            this game step by step.
+                                        </i>
+                                        <br><br>
+                                        <b>Diego:</b> “Tanja, do you have from ‘farm animals’ the ‘smelly goat’?”
+                                        <br><br>
+                                        <i>
+                                            Based on this announcement it is common knowledge that Diego has a card of
+                                            the group ‘farm animals’, otherwise he would not be allowed to ask this
+                                            question.
+                                            Moreover, it is common knowledge that he does not have the ‘smelly goat’
+                                            card.
+                                        </i>
+                                        <br><br>
+                                        <b>Tanja:</b> “No.”
+                                        <br><br>
+                                        <i>
+                                            From this point it is common knowledge that Tanja does not have the ‘smelly
+                                            goat’ card, so everyone now removes the possiblity in their model that Tanja
+                                            has a ‘smelly goat’ card.
+                                        </i>
+                                        <br><br>
+                                        Diego’s turn is over, it is Tanja's turn.
+                                        <br><br>
+                                        <b>Tanja:</b> “Diego, do you have from ‘farm animals’ the ‘crazy pig’?”
+                                        <br><br>
+                                        <i>This time again it becomes common knowledge that Tanja has a card of the
+                                            ‘farm animals’, but she does not have the ‘crazy pig’.</i>
+                                        <br><br>
+                                        <b>Diego:</b> “Yes.”
+                                        <br><br>
+                                        Diego gives the ‘crazy pig’ card to Tanja.
+                                        <br><br>
+                                        <i>
+                                            Now it is common knowledge that Tanja has the ‘crazy pig’. <br>
+                                            It is common knowledge Diego & Ruben do not have the ‘crazy pig’. <br>
+                                            Moreover, Ruben and Tanja no longer know whether Diego has a ‘farm animals’
+                                            card.<br>
+                                        </i>
+                                    </p>
+                                </div><!-- end desc -->
+
+                                <!--<div class="blog-media">
+                                    <img id="meme2" src="../images/knowing.jpg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
+                                </div> end media -->
+
+                                <div class="blog-desc-big">
+                                    <p id="architecture" class="lead">Architecture</p>
+                                    <p class="article-text">
+                                        To model the structure of a Kripke model, we use python dictionaries.
+                                        Keys in the dictionaries are representative of propositional atoms in each
+                                        world,
+                                        with exception of the agent key which defines the agent relation. Keys are
+                                        nested;
+                                        by following the structure the keys are added to define the values of the
+                                        propositional
+                                        atoms of a world. The final value is an Operator of the K language,
+                                        [<b>M</b>,<b>K</b>,<b>not</b>];
+                                        here <b>not</b> can be seen as removed from the model. A visualisation of the
+                                        structure
+                                        can be found in <a href="#figure1">Figure 1</a>. The reasoning behind the key
+                                        ordering
+                                        in our data structure is that, a possible group is know by an agent before a
+                                        single
+                                        card is known. Furthermore a card group is of higher order than a card,
+                                        optimizing
+                                        the search for possible options. If a card is known, the group is known, so
+                                        there
+                                        is no option of a known card in a <b>M</b> or <b>deleted</b> group.
+                                    </p>
+                                    <div class="blog-media">
+                                        <figure>
+                                            <img id="figure1" src="../images/data_structure_cards.png" alt=""
+                                                 class="img-responsive img-rounded">
+                                            <figcaption>Fig.1 - Card model data structure.</figcaption>
+                                        </figure>
+                                    </div><!-- end media -->
+                                    <p class="article-text">
+                                        While playing different strategies we require to look at different observables,
+                                        as an example we need to look not only at cards but also at card groups.
+                                        In our model we require a seperate model for each of these observables, this is
+                                        because of a limitation in our datastructure. We cannot "remove" a world in the
+                                        model without affecting worlds that should still be accesble from other worlds.
+                                        As an example we cannot remove a group for one agent without removing the group
+                                        for all agents.
+                                        <!-- possible improvement here, can be added to improvement section -->
+                                    </p>
+                                    <div class="blog-media">
+                                        <figure>
+                                            <img id="figure1" style="width: 600px"
+                                                 src="../images/data_structure_groups.png" alt=""
+                                                 class="img-responsive img-rounded">
+                                            <figcaption>Fig.1 - Group model data structure.</figcaption>
+                                        </figure>
+                                    </div><!-- end media -->
+                                    <p class="article-text">
+                                        To make the relation with kripke models more specific, we show in Figure 2 a
+                                        kripke model with the corresponding data structure that we use in Figure 3.
+                                        In this example we have three players and one group of cards. Player B starts
+                                        with two cards and player A and C start with one card. Player A then asks player
+                                        C for card 1 after which player C announces she does not have this card.
+                                        The data structure is only shown for player A, we have similar data structures
+                                        for player B and C.
+                                    </p>
+                                    <div class="blog-media">
+                                        <figure>
+                                            <img id="figure2" src="../images/kripke.png" alt=""
+                                                 class="img-responsive img-rounded">
+                                            <figcaption>Fig.2 - Kripke model, where the double circle is the true world.
+                                                A1 means that player A has card 1.
+                                            </figcaption>
+                                        </figure>
+                                    </div><!-- end media -->
+                                    <div class="blog-media">
+                                        <figure>
+                                            <img id="figure3" src="../images/model.png" alt=""
+                                                 class="img-responsive img-rounded">
+                                            <figcaption>Fig.3 - Kripke model data structure for player A.</figcaption>
+                                        </figure>
+                                    </div><!-- end media -->
+
+                                </div><!-- end desc -->
+                                <div class="blog-desc-big">
+                                    <p id="actions" class="lead">Actions</p>
+                                    <p class="article-text">
+                                        There are 5 actions that influence the knowledge structure (model):
+                                    <ul>
+                                        <li class="article-text"><b>(Private) Seeing own cards</b>:
+                                            By the basic step of looking at which cards an agent has in his hand, we can
+                                            update the model by removing worlds were these cards are owned by other
+                                            players. This step is private for each individual agent.
+                                        </li>
+                                        <br>
+                                        <li class="article-text"><b>(Announcement) Requesting a card:</b> According the
+                                            rules requesting a card can only be done when you have a card from the
+                                            group. This is a public move, so for each agent we update the model,
+                                            replacing <b>M</b>(requested_group) because we have <b>K</b>(requested_group)
+                                            for that agent
+                                        </li>
+                                        <br>
+                                        <li class="article-text"><b>(Announcement) Giving a card:</b> Giving a card is
+                                            one of the most important announcements. After this action we update the
+                                            model for each agent, that we know the specific group and card for the card
+                                            receiving agent and remove it for all other agents in that model. Less
+                                            obvious but still important is that we also have to update each agent that
+                                            the giving player to <b>M</b>(group) if that was it's only known card.
+                                        </li>
+                                        <br>
+                                        <li class="article-text"><b>(Announcement) Not giving a card:</b> We update the
+                                            model of each agent by removing the world were the asked agent has this card
+                                            from the model.
+                                        </li>
+                                        <br>
+                                        <li class="article-text"><b>(Announcement) Kwartet!:</b> We update each agent
+                                            model by removing the group entirely from the model.
+                                        </li>
+                                    </ul>
+                                    </p>
+                                    <br>
+                                    <p class="article-text">
+                                        Furthermore we have 1 action that does not change the model but uses second
+                                        order logic:
+                                    <ul>
+                                        <li class="article-text"><b>(Private) Assess model (advanced thinking, not
+                                            applied for all agents):</b> By individually looking at what other agents
+                                            know, the agent tries a different strategy of asking cards in the model.
+                                        </li>
+                                    </ul>
+                                    </p>
+
+                                    <div class="blog-desc-big">
+                                        <p id="discussion" class="lead">Discussion</p>
+                                        <p class="article-text">
+                                            We have chosen for a model per agent instead of one full model containing
+                                            all worlds and agent relations. In our opinion an per agent model makes more
+                                            sense, as in a real life situations agents are isolated, therefore an agent
+                                            cannot easily rely on a model that is shared with mulitple agents. A model
+                                            per agent gives the extra flexibility of fully isolated decision making.
+                                            <br>
+                                            When implementing different strategies, it is depended on what strategies
+                                            the other agents play to have a bigger chance at winning. Finding the best
+                                            and most reselient strategy was not our goal, but might be very good
+                                            continuation of this project.
+                                            <br>
+                                            The python Random library as with all random functions is a Psuedo-Random
+                                            function this means the randomization is determenistic. We however do
+                                            consider the randomization in card division and unknown card choice as fully
+                                            random.
+                                        </p>
+
+
+                                        <div class="blog-desc-big">
+                                            <p id="conclusion" class="lead">Conclusion</p>
+                                            <p class="article-text">
+                                                The simulation works as expected, however there is still a lot of
+                                                improvements possible as we will mention in the <a href="#improvements">improvements</a>
+                                                section.
+                                                Our simulation does not manage to solve higher logic then second order,
+                                                for the game of kwartet this is not a very important skill. The second
+                                                order logic can be usefull in cases like, when an agent uses the fact
+                                                that another agent knows his card, trying to get a kwartet for this card
+                                                as soon as possible.
+                                                <br><br>
+                                                TODO: finish below
+                                                <br><br>
+                                                From the strategies we implemented, we concluded that ... is the best
+                                                strategy, although as mentioned earlier in the discussion this is very
+                                                dependent.
+                                                Adding second order logic, is usefull for agents to win games as can be
+                                                seen in the results. ..
+                                            </p>
+
+
+                                            <div class="blog-desc-big">
+                                                <p id="improvements" class="lead">Improvements</p>
+                                                <p class="article-text">
+                                                    In our implementation of kwartet there is still much to improve in
+                                                    play and in performance. A few points we will list:
+                                                <ul>
+                                                    <li class="article-text">Our simulation has no implementation for
+                                                        drawing cards as is normal in regular kwartet. This means
+                                                        however that on different announcements and actions the model
+                                                        changes diffferently as it might be that cards are still in the
+                                                        deck.
+                                                    </li>
+                                                    <br>
+                                                    <li class="article-text">In our data structure all worlds are
+                                                        initialized, creating the largest possible Kripke model. The
+                                                        behaviour of a Kripke model is simulated by setting elements to
+                                                        be removed when we make announcements. Dynamic world creation
+                                                        and removal in a data structure might be more memory efficient
+                                                        and faster to process.
+                                                    </li>
+                                                    <br>
+                                                    <li class="article-text">To create a more human like simulation, the
+                                                        simulation could add agents forgetting cards, this can be done
+                                                        by once in a while setting <b>K</b> propositionals to <b>M</b>
+                                                        in the kripke model.
+                                                    </li>
+                                                    <br>
+                                                    <li class="article-text">Agents now choose to pick cards they know,
+                                                        however it might be more benificial to play with different or
+                                                        alternating strategies. So might it be better for an agent to
+                                                        wait with asking for some card, untill all players are known to
+                                                        have that group, keeping their group a secret.
+                                                    </li>
+                                                </ul>
+                                                </p>
+                                            </div><!-- end desc -->
+                                        </div><!-- end blog wrapper -->
+                                    </div><!-- end content -->
+                                </div><!-- end col -->
+                            </div><!-- end row -->
+                        </div><!-- end box -->
+                    </div><!-- end container -->
+                </div><!-- end wrapper -->
+
+                <!-- jQuery Files -->
+                <script src="../js/jquery.min.js"></script>
+                <script src="../js/bootstrap.min.js"></script>
+                <script src="../js/animate.js"></script>
+                <script src="../js/custom.js"></script>
 </body>
 </html>
