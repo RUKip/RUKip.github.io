@@ -103,11 +103,17 @@
                                     cards to figure out which player has the cards you require for completing a Kwartet.
                                 </p>
                                 <p class="article-text">
+									In this project we try to make a working simulation of kwartet using logic rules for a multi agent system. The system is played by computer generated agents which make decision based on their model. 
+									This article will explain our decisions, steps, results and some theory behind the game. 
                                     The simulation is programmed in Python 3 and uses only the Python standard library.
                                     The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
                                     The simulation is tracked by logging steps from the simulation to a log file.
                                     Furthermore we added graph generation of the indivdual agent models, the models can
                                     be found in the "knowledge-graphs" directory, created upon running the program.
+								</p>
+								<p class="article-text">
+                                    Besides our goal of making a working kwartet simulation using logic rules we also have set ourselves the extra goal of finding out the best kwartet strategy and become kwartet masters!
+                                    We also thought it would be a nice addition if you could join the agents in a game of kwaret. So there are 2 modes in this kwartet, one were you can let agents play against each other and one where you can play against other agents using the terminal.
                                 </p>
 
                             </div><!-- end desc -->
@@ -134,7 +140,8 @@
                                     ‘a fat cow’ if you own at least one of the other ‘farm animals’ cards. Secondly,
                                     which may be the most important rule of Kwartet, you are not allowed to lie.
                                     If someone asks you for a card that you own, you have to give him the card.
-                                    <br><br>
+								</p>
+								<p class="article-text">
                                     Every group consists of 4 cards. If you have collected all cards from a group,
                                     you earn 1 point and the group is out of the game. The game ends if all groups
                                     are collected and there are no cards left in the game. The player with the most
@@ -257,7 +264,7 @@
                                     </p>
                                     <div class="blog-media">
                                         <figure>
-                                            <img id="figure3" src="../images/Kripke.png" alt=""
+                                            <img id="figure3" src="../images/kripke.png" alt=""
                                                  class="img-responsive img-rounded">
                                             <figcaption>Fig.3 - Kripke model, where the double circle is the true world.
                                                 A1 means that player A has card 1.
@@ -312,7 +319,6 @@
                                         </li>
                                     </ul>
                                     </p>
-                                    <br>
                                     <p class="article-text">
                                         Furthermore we have 1 action that does not change the model but uses second
                                         order logic:
@@ -324,24 +330,81 @@
                                     </ul>
                                     </p>
 
+									<div class="blog-desc-big">
+										<p id="actions" class="lead">Results</p>
+										<p class="article-text">
+											We tested implemented strategies by running the game 100 times using 4 agents and 24 cards. We choose 4 agents so exclusion does not play a direct role.  
+											Keep in mind that in kwartet there always plays a certain 'luck' factor, created by the random division of cards and questioning. We tried to decrease the effect by the increasing in player count, card number and of course number of games.  
+											The resulting win percentages using the different strategies are below: 
+											<table>
+												<tr>
+													<th><i>Strategy</i></th>
+													<th><i>Agent 1</i></th>
+													<th><i>Agent 2</i></th>
+													<th><i>Agent 3</i></th>
+													<th><i>Agent 4</i></th>
+												</tr>
+												<tr>
+													<th>All random (worst case)</th>
+													<th>39%</th>
+													<th>25%</th>
+													<th>26%</th>
+													<th>10%</th>
+												</tr>	
+												<tr>
+													<th>Agent 1 using first order, others random</th>
+													<th>94%</th>
+													<th>1%</th>
+													<th>4%</th>
+													<th>1%</th>
+												</tr>	
+											</table>
+										</p>
+										<p class="article-text">
+											We also tested perfomance, as the model grows exponentionally it is intresting to know what the limits in cards, strategy and agent count is.
+											These are the performance results:
+											<table>
+												<tr>
+													<th><i>Strategy</i></th>
+													<th><i>Play rounds</i></th>
+													<th><i>Player count</i></th>
+													<th><i>Card count</i></th>
+													<th><i>Time (seconds)</i></th>
+												</tr>
+												<tr>
+													<th>All random (worst case)</th>
+													<th>340</th>
+													<th>10</th>
+													<th>24</th>
+													<th>130</th>
+												</tr>	
+											</table>
+										</p>
+                                    </div>
+                                    
+                                    
                                     <div class="blog-desc-big">
                                         <p id="discussion" class="lead">Discussion</p>
                                         <p class="article-text">
+											Looking at the results between the different strategies, we can already see the 'luck' factor playing a role in that the win percentages are not equal over the agents. 
+											This effect is further strenghtened by the fact that the python Random library as with all random functions is a Pseudo-Random
+                                            function this means the randomization is deterministic. We will however act like the randomization in card division and unknown card choice as fully
+                                            random. This because a better strategy is still visible when agents play different strategies.
+                                            <br>
+                                            Not suprisingly we can clearly see that the first order logic already almost always beats the random agents. The random agents in principle only use <b>Deleted</b> and <b>M</b>, by adding <b>K</b> agent 1 can ask all cards when they are known without them being asked back as quickly. 
+                                            <br>
+											When implementing different strategies, it is depended on what strategies
+                                            the other agents play to have a bigger chance at winning. Finding the best
+                                            and most resilient strategy was not our goal, but might be very good
+                                            continuation of this project.
+                                            <br>
                                             We have chosen a model per agent instead of one full model containing
                                             all worlds and agent relations. In our opinion a per agent model makes more
                                             sense, as in real life situations agents are isolated, therefore an agent
                                             cannot easily rely on a model that is shared with multiple agents. A model
                                             per agent gives the extra flexibility of fully isolated decision making.
                                             <br>
-                                            When implementing different strategies, it is depended on what strategies
-                                            the other agents play to have a bigger chance at winning. Finding the best
-                                            and most resilient strategy was not our goal, but might be very good
-                                            continuation of this project.
-                                            <br>
-                                            The python Random library as with all random functions is a Pseudo-Random
-                                            function this means the randomization is deterministic. We however do
-                                            consider the randomization in card division and unknown card choice as fully
-                                            random.
+
                                         </p>
 
 
@@ -354,7 +417,7 @@
                                                 second order, but for the game of Kwartet this is not a very important
                                                 skill. The second order logic can be useful in cases like, when an agent
                                                 uses the fact that another agent knows his card, trying to get a Kwartet
-                                                for this card as soon as possible.
+                                                for this card as soon as possible. Performance wise the model is able to handle an acceptable growing amount of players and cards.
                                                 <br><br>
                                                 TODO: finish below
                                                 <br><br>

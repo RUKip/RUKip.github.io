@@ -93,6 +93,13 @@ body {
     color: #a2a2a2;
 }
 
+
+table { 
+    border-spacing: 10px;
+    border-collapse: separate;
+    color: #59727f;
+}
+
 body,
 p,
 li,
