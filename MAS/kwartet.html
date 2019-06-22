@@ -86,9 +86,10 @@
                                     <li><a href="#example">Example game loop</a></li>
                                     <li><a href="#architecture">Architecture</a></li>
                                     <li><a href="#actions">Actions</a></li>
-                                    <li><a href="#actions">Discussion</a></li>
-                                    <li><a href="#actions">Conclusion</a></li>
-                                    <li><a href="#actions">Improvements</a></li>
+                                    <li><a href="#results">Results</a></li>
+                                    <li><a href="#discussion">Discussion</a></li>
+                                    <li><a href="#conclusion">Conclusion</a></li>
+                                    <li><a href="#improvements">Improvements</a></li>
                                 </ul>
 
                             </div><!-- end desc -->
@@ -331,7 +332,7 @@
                                     </p>
 
 									<div class="blog-desc-big">
-										<p id="actions" class="lead">Results</p>
+										<p id="results" class="lead">Results</p>
 										<p class="article-text">
 											We tested implemented strategies by running the game 100 times using 4 agents and 24 cards. We choose 4 agents so exclusion does not play a direct role.  
 											Keep in mind that in kwartet there always plays a certain 'luck' factor, created by the random division of cards and questioning. We tried to decrease the effect by the increasing in player count, card number and of course number of games.  
@@ -352,7 +353,7 @@
 													<th>10%</th>
 												</tr>	
 												<tr>
-													<th>Agent 1 using first order, others random</th>
+													<th>A1 first order, rest random</th>
 													<th>94%</th>
 													<th>1%</th>
 													<th>4%</th>
@@ -366,7 +367,7 @@
 											<table>
 												<tr>
 													<th><i>Strategy</i></th>
-													<th><i>Play rounds</i></th>
+													<th><i>Average play rounds</i></th>
 													<th><i>Player count</i></th>
 													<th><i>Card count</i></th>
 													<th><i>Time (seconds)</i></th>
@@ -377,6 +378,13 @@
 													<th>10</th>
 													<th>24</th>
 													<th>130</th>
+												</tr>
+												<tr>
+													<th>A1 first order, rest random</th>
+													<th>100</th>
+													<th>10</th>
+													<th>24</th>
+													<th>32</th>
 												</tr>	
 											</table>
 										</p>
@@ -388,7 +396,7 @@
                                         <p class="article-text">
 											Looking at the results between the different strategies, we can already see the 'luck' factor playing a role in that the win percentages are not equal over the agents. 
 											This effect is further strenghtened by the fact that the python Random library as with all random functions is a Pseudo-Random
-                                            function this means the randomization is deterministic. We will however act like the randomization in card division and unknown card choice as fully
+                                            function, this means the randomization is deterministic. We will however act like the randomization in card division and unknown card choice as fully
                                             random. This because a better strategy is still visible when agents play different strategies.
                                             <br>
                                             Not suprisingly we can clearly see that the first order logic already almost always beats the random agents. The random agents in principle only use <b>Deleted</b> and <b>M</b>, by adding <b>K</b> agent 1 can ask all cards when they are known without them being asked back as quickly. 
