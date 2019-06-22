@@ -347,23 +347,44 @@
 												</tr>
 												<tr>
 													<th>All random (worst case)</th>
-													<th>39%</th>
-													<th>25%</th>
-													<th>26%</th>
-													<th>10%</th>
+													<th>20.9%</th>
+													<th>28.2%</th>
+													<th>23.6%</th>
+													<th>27.2%</th>
 												</tr>	
 												<tr>
-													<th>A1 first order, rest random</th>
-													<th>94%</th>
-													<th>1%</th>
-													<th>4%</th>
-													<th>1%</th>
+													<th>A1 1st order, rest random</th>
+													<th>83.5%</th>
+													<th>6.3%</th>
+													<th>2.8%</th>
+													<th>7.3%</th>
+												</tr>	
+												<tr>
+													<th>All 1st order, A1 advanced </th>
+													<th>32.8%</th>
+													<th>22%</th>
+													<th>24.5%</th>
+													<th>20.7%</th>
+												</tr>
+												<tr>
+													<th>A1 1st order, A2 2nd order, rest random</th>
+													<th>36.3%</th>
+													<th>57.2%</th>
+													<th>2.7%</th>
+													<th>3.8%</th>
+												</tr>	
+												<tr>
+													<th>A1 1st order, A2 2nd order + advanced (best case), rest random</th>
+													<th>30.6%</th>
+													<th>62.5%</th>
+													<th>3.5%</th>
+													<th>3.3%</th>
 												</tr>	
 											</table>
 										</p>
 										<p class="article-text">
 											We also tested perfomance, as the model grows exponentionally it is intresting to know what the limits in cards, strategy and agent count is.
-											These are the performance results:
+											These are the performance results for 1 game of kwartet, keep in mind that performance might be different based on factors like hardware:
 											<table>
 												<tr>
 													<th><i>Strategy</i></th>
@@ -385,6 +406,27 @@
 													<th>10</th>
 													<th>24</th>
 													<th>32</th>
+												</tr>
+												<tr>
+													<th>All 1st order, A1 advanced </th>
+													<th>90</th>
+													<th>10</th>
+													<th>24</th>
+													<th>50</th>
+												</tr>
+												<tr>
+													<th>A1 2nd order, rest 1st order </th>
+													<th>85</th>
+													<th>10</th>
+													<th>24</th>
+													<th>25</th>
+												</tr>	
+												<tr>
+													<th>All 2nd order</th>
+													<th>80</th>
+													<th>10</th>
+													<th>24</th>
+													<th>30</th>
 												</tr>	
 											</table>
 										</p>
@@ -400,6 +442,8 @@
                                             random. This because a better strategy is still visible when agents play different strategies.
                                             <br>
                                             Not suprisingly we can clearly see that the first order logic already almost always beats the random agents. The random agents in principle only use <b>Deleted</b> and <b>M</b>, by adding <b>K</b> agent 1 can ask all cards when they are known without them being asked back as quickly. 
+                                            The same holds for counting cards which seems to improve win ratio a small percentage.
+                                            What is more intresting is that we see that second logic order actually already has a significant win ratio over the first order agent.  
                                             <br>
 											When implementing different strategies, it is depended on what strategies
                                             the other agents play to have a bigger chance at winning. Finding the best
@@ -426,14 +470,13 @@
                                                 skill. The second order logic can be useful in cases like, when an agent
                                                 uses the fact that another agent knows his card, trying to get a Kwartet
                                                 for this card as soon as possible. Performance wise the model is able to handle an acceptable growing amount of players and cards.
-                                                <br><br>
-                                                TODO: finish below
-                                                <br><br>
-                                                From the strategies we implemented, we concluded that ... is the best
-                                                strategy, although as mentioned earlier in the discussion this is very
-                                                dependent.
-                                                Adding second order logic, is usefull for agents to win games as can be
-                                                seen in the results. ..
+                                                From the strategies we implemented, we concluded that the best strategy is to actually hide cards from your card set, playing known known cards as quickly as possible. 
+                                                This strategy is requires the 2nd order logic model.
+                                                Less suprisingly is that the advanced thinking also improves win chance, counting cards makes a difference. 
+                                                Although there are some clear results, as mentioned earlier in the discussion, we still think it is very
+                                                dependent on what your opponents do to be succesfull.
+                                                As final conclusion we can definilty say that adding second order logic, is usefull for agents to win games as can be
+                                                seen in the results. So if your an aspiring pro kwartet player, here is some free advice, count your cards and think about what your opponents are thinking.
                                             </p>
 
 
@@ -465,11 +508,8 @@
                                                         probability <b><em>P</em></b> in the model.
                                                     </li>
                                                     <br>
-                                                    <li class="article-text">Agents now choose to pick cards they know,
-                                                        however it might be more beneficial to play with different or
-                                                        alternative strategies. It might be better for an agent to
-                                                        wait for asking for a card, until all players are known to
-                                                        have that group, keeping their group a secret.
+                                                    <li class="article-text">There are still different alternative strategies or even dynamic strategies. 
+                                                    We only implemented the mentioned strategies. 
                                                     </li>
                                                 </ul>
                                                 </p>
