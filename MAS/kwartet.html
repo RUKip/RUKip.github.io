@@ -104,7 +104,7 @@
                                     cards to figure out which player has the cards you require for completing a Kwartet.
                                 </p>
                                 <p class="article-text">
-									In this project we try to make a working simulation of kwartet using logic rules for a multi agent system. The system is played by computer generated agents which make decision based on their model. 
+									In this project we try to make a working simulation of kwartet using logic rules for a multi-agent system. The system is played by computer generated agents which make decision based on their model. 
 									This article will explain our decisions, steps, results and some theory behind the game. 
                                     The simulation is programmed in Python 3 and uses only the Python standard library.
                                     The code can be found <a href="https://github.com/RUKip/kwartet" target="_blank">here</a>.
@@ -130,7 +130,7 @@
                                 </div> end media -->
 
                                 <p class="article-text">
-                                    The game of Kwartet is played in random order.
+                                    The game of Kwartet is played in an unusual order.
                                     That is, after a player finishes his turn, the player last asked a card starts
                                     his turn. On your turn, you can ask for a card to any other player.
                                     If the other player does not have the card, your turn is over and his will start.
@@ -279,7 +279,16 @@
                                             <figcaption>Fig.4 - Kripke model data structure for player A.</figcaption>
                                         </figure>
                                     </div><!-- end media -->
-
+				    <p class="article-text">
+					The model described so far can only store first-order logic. However, 
+					in a game of kwartet one also uses the knowledge of the other players. To store 
+					second-order, an extra layer, the observer, is added between group and player. 
+					If the observer is the player himself, then we have in that branch the model as 
+					it was before. However, if the observer is one of the opponents, a player stores 
+					what he knows about the opponents' knowledge. We could not think of kwartet 
+					strategies using third or even higher order logic. If you outthink us, note that 
+					higher order logic can be implemented similar to second order logic.
+				    </p>
                                 </div><!-- end desc -->
                                 <div class="blog-desc-big">
                                     <p id="actions" class="lead">Actions</p>
@@ -478,8 +487,8 @@
                                                 Less suprisingly is that the advanced thinking also improves win chance, counting cards makes a difference. 
                                                 Although there are some clear results, as mentioned earlier in the discussion, we still think it is very
                                                 dependent on what your opponents do to be succesfull.
-                                                As final conclusion we can definilty say that adding second order logic, is usefull for agents to win games as can be
-                                                seen in the results. So if your an aspiring pro kwartet player, here is some free advice, count your cards and think about what your opponents are thinking.
+                                                As final conclusion, we can definitely say that adding second order logic is usefull for agents to win games, as can be
+                                                seen in the results. So if you are an aspiring pro kwartet player, here is some free advice, count your cards and think about what your opponents are thinking.
                                             </p>
 
 
