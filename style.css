@@ -1047,6 +1047,14 @@ SECTIONS
     background-color: #000000;
 }
 
+.section.right {
+	float: right;
+}
+
+.section.right div {
+	text-align: right;
+}
+
 .overlay {
     position: absolute;
     top: 0;
