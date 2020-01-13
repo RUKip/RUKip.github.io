@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:latest
+    command: --wiredTigerCacheSizeGB 0.5 --bind_ip_all --port 27017 --replSet rs0
+    environment:
+     TERM: xterm
+  mongo-2:
+    image: mongo:latest
+    command: --wiredTigerCacheSizeGB 0.5 --bind_ip_all --port 27017 --replSet rs0
+    environment:
+     TERM: xterm
+  mongo-3:
+    image: mongo:latest
+    command: --wiredTigerCacheSizeGB 0.5 --bind_ip_all --port 27017 --replSet rs0
+    environment:
+     TERM: xterm
+  rsinit:
+    image: grkip/db-init:latest
+    depends_on:
+      - mongo
+      - mongo-2
+      - mongo-3
+    entrypoint: ["sh", "-c", "init.sh"]

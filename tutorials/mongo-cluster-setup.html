@@ -1,0 +1,220 @@
+<!doctype html>
+<!--[if IE 9]>
+<html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js " lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Site Meta -->
+    <title>Mongo replica set</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Custom & Default Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/carousel.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="preloader">
+    <img class="preloader" src="../images/loader.gif" alt="">
+</div><!-- end loader -->
+<!-- END LOADER -->
+
+<header class="header header-normal">
+    <div class="topbar clearfix">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="col-md-6 col-sm-6 text-middle">
+                    <p>
+                        <a href="../index.html">Home</a>
+                    </p>
+                </div><!-- end left -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end topbar -->
+</header>
+
+<div id="wrapper">
+    <div class="container">
+        <div class="boxed">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="content blog-list">
+                        <div class="blog-wrapper clearfix">
+                            <div class="blog-meta">
+                                <h3>Setting up a mongo replica set</h3>
+                                <ul class="list-inline">
+                                    <li><span>written by</span><a href="https://github.com/RUKip" target="_blank">Ruben Kip</a>
+                                    </li>
+                                </ul>
+                            </div><!-- end blog-meta -->
+
+                            <div class="blog-desc-big">
+                                <p class="lead">Content</p>
+                                <ul>
+                                    <li><a href="#intro">Introduction</a></li>
+									<li><a href="#explain">Mongo replica set</a></li>
+                                </ul>
+
+                            </div><!-- end desc -->
+
+                            <div class="blog-desc-big">
+                                <p id="intro" class="lead">Introduction</p>
+                                <p class="article-text">
+                                    In this short tutorial we will look at how you can set up a MongoDB replica set. 
+									First we give a little introduction to replica sets, after which we show how to create a replica set.
+									In a next tutorial we show how to enable sharding building on this example.
+									In our example each mongo instance will be running in a seperate container as to support the fault tolerant requirement. 
+									Furthermore we try to minimize command line arguments by moving command line to shell scripts, this way starting new replica sets requires less steps, however it also means we create some assumptions about the naming and amount of instances in a replica set. 
+									Although most steps are explained step by step, minor docker and database knowledge is required. <br>
+									<b>WARNING:<br> This example is not intended for production environments, no mind has been given to security concerns.</b>
+                                </p>
+                                <p class="article-text">
+								
+								</p>
+                            </div><!-- end desc -->
+							
+							<div class="blog-desc-big">
+                                <p id="explain" class="lead">Mongo Replica set </p>
+                                <p class="article-text">
+									To make your application more fault tolerant you can create a replica set. A replica set is a collection of MongoDB instances that contain copies of the same data. Instead of accessing one specific instance, you would then access the replica set, which would then get data from the current primary instance. 
+									Whenever the primary instance in the replica set becomes unavailable the other instances vote for a new primary from which data can be accessed. An example of this can be seen in the figure below. 									
+								</p>
+								<div class="blog-media">
+									<img id="replica-secondaries" src="../images/replica-set-primary-with-two-secondaries.bakedsvg.svg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
+								</div>
+								<p class="article-text">
+									Important for the voting process is that there are at least 3 voting instances, as with 2 instances one instance cannot decide which instance is failing. Next to primaries and secondaries a third type of instance exists, the arbiter, this instance does not contain data and thus cannot become primary however does participate in the voting process.
+									An example can be seen in the figure below.
+								</p>
+								<div class="blog-media">
+									<img id="replica-arbiter" src="../images/replica-set-primary-with-secondary-and-arbiter.bakedsvg.svg" alt="" class="img-responsive img-rounded" style="max-height:200px;width:auto" >
+								</div>
+								<p class="article-text">
+                                    More detailed information on replica sets and how to set them up can be found at the MongoDB <a href='https://docs.mongodb.com/manual/replication/' target='blank'/>offical website</a> 
+                                </p>
+                                <p class="article-text">
+								
+								</p>
+                            </div><!-- end desc -->
+							
+							
+							<div class="blog-desc-big">
+                                <p id="intro" class="lead">Setting up docker containers</p>
+                                <p class="article-text">
+									To run a replica set first we need to setup a container for each mongo instance. Setting up a container with Mongo is trivial as we can pull a MongoDB image from docker hub.
+									However running a Mongo container for each instance is not enough, as we want to setup our replica set autmatically we also create an init container, which will setup the replica setup on start. For the initialization we will have to create our own image. Below is the content inside our <i>Dockerfile</i>.
+								</p>
+								<pre><code><p>FROM mongo</p><p>ADD init.sh /usr/local/bin/</p><p>RUN chmod +x /usr/local/bin/init.sh</p></code></pre>
+								<p class="article-text">	
+									So lets explain each line shortly:
+									<ul>
+										<li class="article-text">									
+											Naturally our image needs MongoDB so we pull the latests mongoDB image, of course any valid image with MongoDB could be used here. 
+										</li>
+										<li class="article-text">									
+											Second we copy an initialization script, located in our build folder, to the containers <code>/usr/local/bin/</code> folder. (explained later)
+										</li>
+										<li class="article-text">									
+											Finally we want to make sure our initialization script has execution rights, so we apply chmod on our script. 
+										</li>
+									</ul>
+                                </p>
+								<p class="article-text">
+									In this example we startup the containers using docker-compose, so we create a <i>docker-compose.yaml</i>. Below is an example of what this could look like till now.
+								</p>
+								<div><object style="width:1000px;height:400px" data="compose-mongo.txt"></object></div>
+								<p class="article-text">
+									As we can see there are 3 mongo instances which will be running as primary, secondary or arbiter. rsinit will be our intialization script.
+									Most important to focus on is that we are using the docker-compose command argument to add some parameters to the default start command, 
+									<br><code>--wiredTigerCacheSizeGB 0.5 --bind_ip_all --port 27017 --replSet rs0</code><br>
+									In this example we use the default mongo port 27017 for each instance, and for simplicity bind all ports. 
+									Further important to notice is that all is instances are part of replSet rs0.
+								</p>
+							</div><!-- end desc -->
+								
+							<div class="blog-desc-big">
+							    <p id="intro" class="lead">Creating a replica set</p>
+                                <p class="article-text">
+									Ok so now we have our mongo instances running, how do we make them a replica set? This is where our init script comes in.
+								</p>
+								<pre><code><p>#!/bin/bash</p><p>echo "prepare rs initiating"</p><p>check_db_status() {</p><p>mongo1=$(mongo --host mongo --port 27017 --eval "db.stats().ok" | tail -n1 | grep -E '(^|\s)1($|\s)')</p><p>mongo2=$(mongo --host mongo-2 --port 27017 --eval "db.stats().ok" | tail -n1 | grep -E '(^|\s)1($|\s)')</p><p>mongo3=$(mongo --host mongo-3 --port 27017 --eval "db.stats().ok" | tail -n1 | grep -E '(^|\s)1($|\s)')</p>
+<p>if [[ $mongo1 == 1 ]] && [[ $mongo2 == 1 ]] && [[ $mongo3 == 1 ]]; then</p><p>  init_rs</p><p>else</p><p>  check_db_status</p><p>fi</p><p>}</p>
+<p>init_rs() {</p><p>  ret=$(mongo --host mongo --port 27017 --eval "rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'mongo:27017' }, { _id: 1, host: 'mongo-2:27017' }, { _id: 2, host: 'mongo-3:27017' } ] })" > /dev/null 2>&1)</p><p>}</p><p>check_db_status > /dev/null 2>&1</p><p>echo "rs initiating finished"</p><p>exit 0</p></code></pre>
+
+								<p class="article-text">
+									So lets explain the script step by step.
+									<ul>
+										<li class="article-text">									
+											At <code>check_db_status > /dev/null 2>&1</code> we call our check_db_status function and send the output to /dev/null
+										</li>
+										<li class="article-text">									
+											check_db_status will try to reach or 3 hardcoded mongo services, by checking if the status is ok. If status of all 3 services is ok, we can create the replica set else we have to try again. Note that we access the 3 mongo instances on there default port and by name as defined in the <i>docker-compose.yaml</i>.  
+										</li>
+										<li class="article-text">									
+											At this point everything is ready thus the script will call the command <code>rs.initiate({ _id: 'rs0', members: [{ _id: 0, host: 'mongo:27017' }, { _id: 1, host: 'mongo-2:27017' }, { _id: 2, host: 'mongo-3:27017' } ] })</code> on one of our mongo services (in this case service with name mongo). This command will setup the replica set given its members and the name of the replica set, which to match with our docker-compose has to be rs0.
+										</li>
+									</ul>
+								</p>
+								
+								<p class="article-text">
+									And that's it! We have our replica set running, one of our instances is primary and the other secondary, to check this connect to one of the containers, open the mongo shell with  <code>mongo</code> and run <code>rs.status()</code>. To access the replica set give all possible options of members in the url, e.g. <code>mongodb://mongo:27017,mongo-2:27017,mongo-3:27017/?replicaSet=rs0</code>
+								</p>
+                            </div><!-- end desc -->
+							
+								<div class="blog-desc-big">
+                                <p id="intro" class="lead">Next: What is sharding?</p>
+                                <p class="article-text">
+									In case of very large databases, it might be become unsustainable to have all data in a single location. With sharding data is divided over different 'shards', making it possible to have way bigger data sets which also could still be replicated.
+									To see how to create a sharded MongoDB cluster see <a href="RUKip.github.io/tutorials/sharding.html">Setting up a sharded mongo cluster</a>
+								</p>
+								<p class="article-text">									
+									More detailed information about sharding and how to set them up can be found at the MongoDB <a href='https://docs.mongodb.com/manual/sharding/' target='blank'/>offical website</a>
+                                </p>
+                                <p class="article-text">
+								
+								</p>
+                            </div><!-- end desc -->
+							
+
+                            </div><!-- end row -->
+                        </div><!-- end box -->
+                    </div><!-- end container -->
+                </div><!-- end wrapper -->
+
+				
+				
+                <!-- jQuery Files -->
+                <script src="../js/jquery.min.js"></script>
+                <script src="../js/bootstrap.min.js"></script>
+                <script src="../js/animate.js"></script>
+                <script src="../js/custom.js"></script>
+</body>
+</html>
